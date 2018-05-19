@@ -1,24 +1,30 @@
 import javax.swing.*;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.*;
 
 public class Main {
+	
 	static JFrame window = null;
-
+	static JPanel currentPanel = null;
+	
 	public static void main(String[] args) throws IOException {
+		System.setProperty("file.encoding", "UTF-8");
 
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (Exception ignored) {
+			// Se o tema do Windows não poder se adicinado,
+			// O tema ficará como o padrão
+		}
+		
 		// Janela Principal
 		window = new JFrame("Trabalho Final");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.pack();
-		window.setVisible(true);
-		
-		// Barra de Rolagem para a Tabela
-		// JScrollPane scrollPane = null;
 
-		// Tabela pra plotar o arquivo CSV
-		// JTable csvTable = null;
+		// Painel inicial
+		currentPanel = new JPanel();
 
 		// Sistema de escolha de arquivo
 		JFileChooser file = new JFileChooser();
@@ -30,25 +36,30 @@ public class Main {
 		// Ação de clique no Botão de Upload
 		ActionListener clickListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				file.setCurrentDirectory(
+					new File(
+						"C:\\Users\\samir.DESKTOP-QOF6N6C\\Documents\\Atividades\\tecnicas_programacao\\trab-final\\Interface\\csv"
+					)
+				);
 				int action = file.showSaveDialog(null);
 		
 				if (action == 1) {
 					System.exit(0);
 				} else {
 					File selectedFile = file.getSelectedFile();
-
-					String[] aux = selectedFile.getPath().split(".");
+					String filePath = selectedFile.getPath();
+					String[] aux = filePath.split("\\.");
 					String fileExt = aux[aux.length - 1].toLowerCase();
 
-					if (fileExt == "csv") {
+					if (fileExt.equals("csv")) {
 						try {	
 							CSVReader csvReader = new CSVReader(selectedFile);
 							csvReader.parse();
 
 							String[] header = csvReader.getHeader();
-							String[][] records = csvReader.getRecords();
+							Object[][] records = csvReader.getRecords();
 
-							launch(records, header);
+							renderTable(records, header);
 
 							JOptionPane.showMessageDialog(null, selectedFile.getPath());
 						} catch (IOException err) {
@@ -57,20 +68,45 @@ public class Main {
 					} else {
 						JOptionPane.showMessageDialog(null, "O arquivo selecionado não é um CSV.");
 					}
-		
 				}
 			}
 		};
 
 		uploadButton.addActionListener(clickListener);
 
-		window.add(uploadButton); // Adicionando a Tabela ao Frame
+		// uploadButton.setBounds();
+
+		currentPanel.add(uploadButton); // Adicionando a Tabela ao Frame
+		
+		window.getContentPane().add(currentPanel);
+
+		launch();
 	}
 	
-	static void launch(String[][] records, String[] header) {
-		JTable csvTable = new JTable(records, header);
-		JScrollPane scrollPane = new JScrollPane(csvTable);
-		window.add(csvTable); // Adicionando o Botão ao Frame
-		window.add(scrollPane); // Adicionando o painel da Tabela
+	static void launch() {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		// Redimensionando a janela pra 50% da largura da tela
+		int screenW = new Double(screenSize.width * 0.5).intValue(); 
+		// Redimensionando a janela pra 70% da altura da tela
+		int screenH = new Double(screenSize.height * 0.7).intValue(); 
+	
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.pack();
+		window.setVisible(true);
+		window.setSize(screenW, screenH);
+		window.setLocationRelativeTo(null); // Centralizando a Janela
+	}
+
+	static void renderTable(Object[][] records, String[] header) {
+		JTable csvTable = new JTable();
+		csvTable.setModel(new DefaultTableModel(records, header));
+
+		csvTable.setBounds(0, 20, 300, 300);
+
+		window.getContentPane().remove(currentPanel);
+		window.revalidate();
+		window.repaint();
+
+		window.getContentPane().add(csvTable); // Adicionando o painel da Tabela
 	}
 }
