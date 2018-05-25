@@ -5,9 +5,9 @@ import javax.imageio.*;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.*;
-import java.beans.EventHandler;
 import java.awt.datatransfer.*;
 import java.awt.dnd.*;
 import java.awt.Image;
@@ -45,11 +45,22 @@ public class Main {
 		// Painel de recebimento do arquivo
 		CustomBGPanel droppablePanel = new CustomBGPanel();
 		droppablePanel.setLayout(new GridBagLayout());
+		droppablePanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// Painel textual
 		JPanel textPanel = new JPanel(new GridBagLayout());
-		JLabel panelTitle = new JLabel("<html><span>Arraste seu arquivo <br><strong style='font-size: 34px'>.CSV</strong><br>ao lado</span></html>");
-		panelTitle.setFont(new Font("Raleway", Font.PLAIN, 24));
+		JLabel panelTitle = new JLabel(
+			new String((
+			"<html>" +
+				"<span style='font-size: 24px'>" +
+					"Arraste seu arquivo <br>" +
+					"<strong style='font-size: 28px'>.CSV</strong> " + 
+					"ao lado" +
+				"</span><br><br>" +
+				"ou clique para procurá-lo" +
+			"</html>").getBytes(), "UTF-8")
+		);
+		panelTitle.setFont(new Font("Raleway", Font.PLAIN, 18));
 		panelTitle.setForeground(new Color(120, 120, 120, 1));
 		textPanel.add(panelTitle);
 
@@ -67,12 +78,10 @@ public class Main {
 		JLabel dropIconLabel = new JLabel(dropIcon);
 		dropIconLabel.setBounds(iconX, iconY, 100, 100);
 
+
 		// Sistema de escolha de arquivo
 		JFileChooser file = new JFileChooser();
 		file.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-		// Botão de upload do arquivo
-		JButton uploadButton = new JButton("UPLOAD");
 
 		DropTarget dropHandle = new DropTarget() {
 			private static final long serialVersionUID = 1L; // unique id
@@ -93,8 +102,8 @@ public class Main {
 		droppablePanel.setDropTarget(dropHandle);
 
 		// Ação de clique no Botão de Upload
-		ActionListener clickListener = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		MouseListener clickListener = new MouseListener() {
+			public void mouseClicked(MouseEvent event) {
 				file.setCurrentDirectory(new File(
 						"C:\\Users\\samir.DESKTOP-QOF6N6C\\Documents\\Atividades\\tecnicas_programacao\\trab-final\\Interface\\csv"));
 				int action = file.showSaveDialog(null);
@@ -105,10 +114,14 @@ public class Main {
 					File selectedFile = file.getSelectedFile();
 					setCSVFile(selectedFile);
 				}
-			}
+			} 
+			public void mouseEntered(MouseEvent event) {} 
+			public void mouseExited(MouseEvent event) {} 
+			public void mousePressed(MouseEvent event) {} 
+			public void mouseReleased(MouseEvent event) {}
 		};
 
-		uploadButton.addActionListener(clickListener);
+		droppablePanel.addMouseListener(clickListener);
 
 		// uploadButton.setBounds();
 
@@ -183,6 +196,7 @@ public class Main {
 		window.getContentPane().remove(currentPanel);
 		window.revalidate();
 		window.repaint();
-		window.getContentPane().add(csvTable); // Adicionando a tabela ao
+		window.getContentPane().add(csvTable); // Adicionando a tabela ao Painel atual
+		window.revalidate();
 	}
 }

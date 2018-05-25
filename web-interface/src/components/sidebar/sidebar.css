@@ -1,0 +1,19 @@
+.sidebar {
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 1rem 0 10rem 0 rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    background-image: url('/imgs/sidebar-overlay.png');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.sidebar h1 {
+    font-size: 1.6rem;
+    text-align: left;
+}
+.sidebar p {
+    font-size: 1.1rem;
+    text-align: left;
+}
