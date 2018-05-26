@@ -7,7 +7,7 @@ public class Covariance extends ArithmeticOperation<Double> {
     }
 
     @Override
-    public double calculate() {
+    public Double calculate() {
         // IMPLEMENTAR
     }
 }

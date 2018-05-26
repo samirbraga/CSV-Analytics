@@ -7,7 +7,7 @@ public class Median extends ArithmeticOperation<Double> {
     }
 
     @Override
-    public double calculate() {
+    public Double calculate() {
             
     }
 }
