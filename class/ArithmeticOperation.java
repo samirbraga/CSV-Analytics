@@ -3,7 +3,7 @@ import java.util.List;
 public abstract class ArithmeticOperation<T> {
     
     private List<T> list;
-    private List<T> optList;
+    private List<T> optList;    // for multivariate metrics
 
 
     public ArithmeticOperation(List<T> list) {
