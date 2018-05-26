@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Mode extends ArithmeticOperation {
+public class Mode extends ArithmeticOperation<T> {
 
     public Mode(List<T> list) {
         super(list);
