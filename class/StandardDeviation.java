@@ -9,5 +9,6 @@ public class StandardDeviation extends ArithmeticOperation<Double> {
     @Override
     public Double calculate() {
         // IMPLEMENTAR
+        return -200.0;
     }
 }

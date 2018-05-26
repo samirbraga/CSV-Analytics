@@ -9,5 +9,6 @@ public class Covariance extends ArithmeticOperation<Double> {
     @Override
     public Double calculate() {
         // IMPLEMENTAR
+        return -200.0;
     }
 }

@@ -9,5 +9,6 @@ public class Variance extends ArithmeticOperation<Double> {
     @Override
     public Double calculate() {
         // IMPLEMENTAR
+        return -200.0;
     }
 }

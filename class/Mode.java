@@ -1,13 +1,15 @@
 import java.util.List;
+import java.util.Arrays;
 
-public class Mode extends ArithmeticOperation<T> {
+public class Mode extends ArithmeticOperation<String> {
 
-    public Mode(List<T> list) {
+    public Mode(List<?> list) {
         super(list);
     }
 
     @Override
-    public List<T> calculate() {
+    public String calculate() {
         // IMPLEMENTAR
+        return "-200.00";
     }
 }
