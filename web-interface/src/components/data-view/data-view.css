@@ -1,0 +1,12 @@
+.data-view {
+    height: 100%;
+    width: 100%;
+}
+
+.data-view .data-view-header {
+    box-shadow: -0.3rem 0.2rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.data-view .data-view-header h2 {
+    font-size: 1.3rem;
+}

@@ -1,0 +1,21 @@
+.slin-button {
+    display: inline-block;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background: transparent;
+    padding: 0.6rem 0.9rem;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    opacity: 0.8;
+    outline: none;
+    will-change: auto;
+    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.slin-button:hover, .slin-button:focus {
+    transform: translateY(2px);
+    opacity: 1;
+    color: #ffffff;
+}

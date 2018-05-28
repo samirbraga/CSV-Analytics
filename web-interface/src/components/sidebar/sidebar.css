@@ -3,7 +3,7 @@
     position: relative;
     box-shadow: 1rem 0 10rem 0 rgba(0, 0, 0, 0.4);
     z-index: 100;
-    background-image: url('/imgs/sidebar-overlay.png');
+    background-image: url('/CSV-Analytics/imgs/sidebar-overlay.png');
     background-size: contain;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -16,4 +16,23 @@
 .sidebar p {
     font-size: 1.1rem;
     text-align: left;
+}
+
+.sidebar .highlight {
+    font-weight: bold;
+    color: #00bc96;
+}
+
+.sidebar .sidebar-header .sidebar-header-title {
+    font-family: 'Raleway', sans-serif;
+}
+
+.sidebar .sidebar-body h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #57a4a5;
+}
+
+.sidebar .sidebar-body p {
+    font-family: 'Roboto', sans-serif;
+    color: #666666;
 }

@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# Link to resolve path problem
+/public/CSV-Analytics.Ink
+
 # production
 /build
 
