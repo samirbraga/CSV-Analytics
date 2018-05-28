@@ -5,7 +5,9 @@ import calcOptions from '../../data';
 
 import TablePlot from '../table-plot/table-plot';
 
-import(__dirname + '/data-view.css');
+import CalcOption from '../metrics/calc-option';
+
+import './data-view.css';
 
 let routes = [];
 
@@ -29,7 +31,7 @@ let DynamicTitle = () => (
 class DataView extends Component {
     render() {
         return (
-            <div class="data-view d-flex flex-column">
+            <div className="data-view d-flex flex-column">
                 <div className="data-view-header py-4 px-3">
                     <h2>
                         <NavLink to="/CSV-Analytics/data-visualization" >
@@ -41,7 +43,10 @@ class DataView extends Component {
                 </div>
                 <Route render={({ location }) => (
                     <Switch>
-                        <Route path={"/CSV-Analytics/data-visualization/"} component={TablePlot} />
+                        <Route path={"/CSV-Analytics/data-visualization/"} exact component={TablePlot} />
+                        <Route exact path={"/CSV-Analytics/data-visualization/:key"} render={(props) => {
+                            return <CalcOption calcKey={props.match.params.key} />;
+                        }} />
                     </Switch>
                 )} />
             </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
-import(__dirname + '/slin-button.css');
+import './slin-button.css';
 
 class SlinButton extends Component {
     render() {

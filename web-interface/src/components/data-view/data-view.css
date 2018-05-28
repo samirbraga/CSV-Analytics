@@ -1,10 +1,15 @@
 .data-view {
     height: 100%;
     width: 100%;
+    background: url('/CSV-Analytics/imgs/table-plot-bg.png') no-repeat right bottom;
+    background-size: 55% auto;
+    background-color: #f6f6f6;
 }
 
 .data-view .data-view-header {
+    z-index: 2;
     box-shadow: -0.3rem 0.2rem 1rem rgba(0, 0, 0, 0.1);
+    background: white;
 }
 
 .data-view .data-view-header h2 {

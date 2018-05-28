@@ -9,12 +9,10 @@ import PanelPage from './components/panel-page/panel-page.js';
 class App extends Component {
   render() {
     return (
-      <Route render={({ location }) => (
-        <Switch location={location} >
+        <Switch>
           <Route path="/CSV-Analytics" exact component={HomePage} ></Route>
           <Route path="/CSV-Analytics/data-visualization" component={PanelPage} ></Route>
         </Switch>
-      )} />
     );
   }
 }

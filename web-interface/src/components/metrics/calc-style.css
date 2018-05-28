@@ -1,0 +1,16 @@
+.calc-container {
+    position: relative;
+    z-index: 10;
+}
+
+.calc-container h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #01665299;
+    text-transform: uppercase;
+}
+
+.calc-container .calc-plain-table tbody tr:nth-child(1) td,
+.calc-container .calc-plain-table tbody tr:nth-child(1) th {
+    border-top: 0;
+}

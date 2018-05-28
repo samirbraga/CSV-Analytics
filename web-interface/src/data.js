@@ -17,7 +17,7 @@ let calcOptions = {
             name: 'VARIÂNCIA'
         },
         {
-            key: 'standart-dsviation',
+            key: 'standart-deviation',
             name: 'DESVIO PADRÃO'
         },
         {

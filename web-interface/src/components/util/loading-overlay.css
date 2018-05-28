@@ -1,0 +1,18 @@
+.loading-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #f6f6f6;
+    z-index: 100;
+}
+
+.loading-overlay svg {
+    opacity: 0.7;
+    animation: fading 1.4s ease-in 0s infinite;
+}
+
+@keyframes fading {
+    0% { opacity: 0.7; transform: rotate(00deg) }
+    50% { opacity: 0.3; transform: rotate(90deg) }
+    100% { opacity: 0.7; transform: rotate(180deg) }
+}

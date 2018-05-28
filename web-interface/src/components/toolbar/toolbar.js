@@ -8,7 +8,7 @@ import calcOptions from '../../data';
 import SlinButton from '../util/slin-button';
 import RoundButton from '../util/round-button';
 
-import (__dirname + '/toolbar.css');
+import './toolbar.css';
 
 let translater = {
     "metrics": "MÉTRICAS",
@@ -26,9 +26,25 @@ class Toolbar extends Component {
         };
 
         this.searchInput = React.createRef();
+        this.toolbarHeader = React.createRef();
+        this.toolbarContent = React.createRef();
 
         this.searchCalc = this.searchCalc.bind(this);
         this.toggleSearch = this.toggleSearch.bind(this);
+    }
+
+    componentDidMount() {
+        let headerEl = this.toolbarHeader.current;
+        let contentEl = this.toolbarContent.current;
+        contentEl.addEventListener('scroll', function(e) {
+            if (this.scrollTop > 20 && !headerEl.classList.contains('shadow')) {
+                headerEl.classList.add('shadow');
+            } else {
+                if (this.scrollTop <= 20 && headerEl.classList.contains('shadow')) {
+                    headerEl.classList.remove('shadow');
+                }
+            }
+        });
     }
 
     toggleSearch() {
@@ -84,7 +100,7 @@ class Toolbar extends Component {
 
         return (
             <div className="toolbar h-100 d-flex flex-column">
-                <div className="toolbar-header pb-3 pt-3 px-3 clearfix">
+                <div ref={this.toolbarHeader} className="toolbar-header pb-3 pt-3 px-3 clearfix">
                     <div className={"search-container float-left " + (this.state.searching ? '' : 'd-none')}>
                         <input ref={this.searchInput} type="text" onKeyUp={(e) => this.searchCalc(e.target.value)} />
                     </div>
@@ -97,7 +113,7 @@ class Toolbar extends Component {
                         className="float-right" 
                     />
                 </div>
-                <div className="toolbar-content pt-0">
+                <div ref={this.toolbarContent} className="toolbar-content pt-0">
                     <hr className="m-0" />
                     {filteredCategoriesKeys.length ? 
                         filteredCategoriesKeys.map((key, i) => (
@@ -123,7 +139,7 @@ class Toolbar extends Component {
                             </div>
                         )) :
                         <div className="calc-section" >
-                            <span class="calc-section-title" >Nenhum cálculo encontrado para sua pesquisa.</span>
+                            <span className="calc-section-title" >Nenhum cálculo encontrado para sua pesquisa.</span>
                         </div>
                     }
                 </div>

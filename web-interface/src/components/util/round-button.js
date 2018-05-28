@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import Ionicon from 'react-ionicons';
 
-import(__dirname + '/round-button.css');
+import './round-button.css';
 
 class RoundButton extends Component {
     render() {

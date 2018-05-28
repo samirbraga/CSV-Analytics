@@ -1,0 +1,25 @@
+.data-table {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    overflow: auto;
+    padding: 1rem 0;
+}
+
+.data-table table thead tr th {
+    border-top: 0;
+}
+
+.data-table table tbody tr td,
+.data-table table thead tr th {
+    font-family: 'Roboto', sans-serif;
+}
+.data-table table tbody tr td:first-child,
+.data-table table thead tr th:first-child {
+    padding-left: 2rem;
+}
+.data-table table tbody tr td:last-child,
+.data-table table thead tr th:last-child {
+    padding-right: 2rem;
+}
