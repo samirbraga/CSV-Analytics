@@ -12,16 +12,6 @@ public class Kurtosis extends ArithmeticOperation<Double> {
 
     @Override
     public Double calculate() {
-        StandardDeviation objStd = new StandardDeviation();
-
-        double standardDeviation, sumFourthPower;
-        int n;
-
-        n = this.getList().size();
-        standardDeviation = objStd.calculate(list);
-        sumFourthPower = Tools.sumOfPowers(this.getList(), 4);
-        kurtosis = sumFourthPower / ((n - 1) * Math.pow(standardDeviation, 4));
-
-        return kurtosis;
-    }
+        // IMPLEMENTAR
+        return -200.0;
 }
