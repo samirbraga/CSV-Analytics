@@ -36,6 +36,13 @@ public class ContingencyTable extends QualitativeGraphicOperation{
 				valuesList.put(str,set);
 			}
 		}
+		Iterator structure = valuesList.keySet(); //Pega todas as chaves que existem em valueList
+		Set firstColumn = (Set) valuesList.get( (String) structure.next() );//Pega o conjunto de valores que ficarão na primeira coluna, a cada linha ele terá um valor diferente. 
+		for(Iterator comparator = firstColumn.iterator(); comparator.hasNext();){
+			String element = (String) firstColumn.next();
+			Map<String,Map> rowContigency = new HashMap<String,Map>();
+			rowContigency.put(element,)
+		}
 
 		return contigencyTable;
 	}
