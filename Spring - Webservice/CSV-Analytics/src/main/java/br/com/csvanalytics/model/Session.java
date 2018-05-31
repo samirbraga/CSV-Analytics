@@ -16,4 +16,15 @@ public class Session{
 	public static Map getSession(String hash){
 		return session.get(hash);
 	}
+
+	public static boolean checkExistence(String hash){
+		Map aux = session.get(hash);
+
+		if (aux != null) {
+			return true;
+
+		}else{
+			return false;
+		}
+	}
 }

@@ -1,14 +1,25 @@
 import java.util.List;
 
-public class Max extends ArithmeticOperation<Double> {
+/**
+ * The largest value in a sample data set
+ */
+public class Max extends ArithmeticOperation {
 
     public Max(List<Double> list) {
         super(list);
     }
 
     @Override
-    public Double calculate() {
-        // IMPLEMENTAR
-        return -200.0;
+    public double calculate() {
+
+        double num = (this.getList()).get(0);
+
+        for(double i: this.getList()) {
+
+            if(i>num)
+              num = i;
+        }
+
+        return num;
     }
 }

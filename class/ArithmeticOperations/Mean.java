@@ -1,14 +1,23 @@
 import java.util.List;
 
-public class Mean extends ArithmeticOperation<Double> {
+/**
+ * The sum of all of the data divided by the count; the average
+ */
+public class Mean extends ArithmeticOperation {
 
     public Mean(List<Double> list) {
         super(list);
     }
-
+    
     @Override
-    public Double calculate() {
-        // IMPLEMENTAR
-        return -200.0;
+    public double calculate() {
+
+        double n = 0;
+
+        for(Double i : this.getList()) {
+            n = i + n;
+        }
+
+        return (n/(this.getList()).size());
     }
 }

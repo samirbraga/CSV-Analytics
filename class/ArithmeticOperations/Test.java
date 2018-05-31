@@ -9,9 +9,9 @@ public class Test {
     public static void testCovariance() {
         System.out.println("Covariance");
         Covariance o = new Covariance(odd, odd);
-        System.out.printf("%.2f == 0.00%n", o.calculate());
+        System.out.printf("%.2f == 1.00%n", o.calculate());
         Covariance e = new Covariance(even, even);
-        System.out.printf("%.2f == 0.00%n", e.calculate());
+        System.out.printf("%.2f == 1.33%n", e.calculate());
     }
 
     public static void testKurtosis() {
@@ -54,14 +54,6 @@ public class Test {
         System.out.printf("%.2f == -1.00%n", e.calculate());
     }
 
-    public static void testMode() {
-        System.out.println("Mode");
-        Mode o = new Mode(odd);
-        System.out.printf("%s == -1.00, 1.0%n", o.calculate());
-        Mode e = new Mode(even);
-        System.out.printf("%s == -1.00, 1.0%n", e.calculate());
-    }
-
     public static void testPearsonCoefficient() {
         System.out.println("Pearson");
         PearsonCoefficient o = new PearsonCoefficient(odd, odd);
@@ -101,7 +93,6 @@ public class Test {
         testMean();
         testMedian();
         testMin();
-        testMode();
         testSkewness();
         testStandardDeviation();
         testVariance();
