@@ -9,7 +9,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/calc")
 public class CSVVarianceEndpoint {
-    @RequestMapping(method = RequestMethod.GET, path = "/variance")
     public Map<String, Double> getVarianceFromColumns() {
         Map<String, Double> myMap = new HashMap<String, Double>();
         myMap.put("notas", 9.0);

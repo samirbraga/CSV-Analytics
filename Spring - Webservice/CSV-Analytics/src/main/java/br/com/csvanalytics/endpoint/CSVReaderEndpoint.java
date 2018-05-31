@@ -6,8 +6,6 @@ import br.com.csvanalytics.model.Session;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
-
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -52,7 +50,7 @@ public class CSVReaderEndpoint {
         tokens[0] = new RandomString().nextString();
         data.put("token", tokens);
 
-        Session.addSession(tokens[0], data);
+        Session.putSession(tokens[0], data);
 
         return data;
     }
