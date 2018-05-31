@@ -1,0 +1,18 @@
+package br.com.csvanalytics.endpoint;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("api/calc")
+public class CSVVarianceEndpoint {
+    @RequestMapping(method = RequestMethod.GET, path = "/variance")
+    public Map<String, Double> getVarianceFromColumns() {
+        Map<String, Double> myMap = new HashMap<String, Double>();
+        myMap.put("notas", 9.0);
+        return myMap;
+    }
+}

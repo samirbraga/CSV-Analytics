@@ -80,3 +80,4 @@ let calcOptions = {
 };
 
 export default calcOptions;
+

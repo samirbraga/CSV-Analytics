@@ -16,7 +16,7 @@
   "homepage": "http://samirbraga.github.io/CSV-Analytics",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm public/CSV-Analytics && react-scripts build && ln -s /public public/CSV-Analytics",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "rm public/CSV-Analytics",
