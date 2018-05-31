@@ -8,7 +8,7 @@ public abstract class SumOfPowers {
     /**
      * Calculates the sum of powers of a list
      * @param list List x1,...,xn with n values
-     * @param power The desired power
+     * @param The desired power
      * @return The sum of all (xi - mean)^power of a list
      */
     public static double calculate(List<Double> list, int power) {
