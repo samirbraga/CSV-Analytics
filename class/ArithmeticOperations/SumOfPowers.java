@@ -1,7 +1,9 @@
+import java.util.List;
+
 /**
  * Auxiliary class
  */
-public abstract final class Tools {
+public abstract class SumOfPowers {
 
     /**
      * Calculates the sum of powers of a list
@@ -9,16 +11,14 @@ public abstract final class Tools {
      * @param power The desired power
      * @return The sum of all (xi - mean)^power of a list
      */
-    public static double sumOfPowers(List<Double> list, int power) {
-        Mean objMean = new Mean(list);
-
-        double listMean = objMean.calculate(list);
+    public static double calculate(List<Double> list, int power) {
+        double listMean = Mean.calculate(list);
         double sumOfPowers = 0;
 
         for (double value : list) {
-            sum += Math.pow(value - listMean, power);
+            sumOfPowers += Math.pow(value - listMean, power);
         }
 
-        return sum;
+        return sumOfPowers;
     }
 }
