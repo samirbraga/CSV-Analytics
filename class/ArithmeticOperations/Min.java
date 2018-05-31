@@ -1,14 +1,25 @@
 import java.util.List;
 
-public class Min extends ArithmeticOperation<Double> {
+/**
+ * The smallest value in a sample data set
+ */
+public class Min extends ArithmeticOperation {
 
     public Min(List<Double> list) {
         super(list);
     }
 
     @Override
-    public Double calculate() {
-        // IMPLEMENTAR
-        return -200.0;
+    public double calculate() {
+
+      double num = (this.getList()).get(0);
+
+      for(double i: this.getList()) {
+        
+          if(i<num)
+            num = i;
+      }
+
+      return num;
     }
 }

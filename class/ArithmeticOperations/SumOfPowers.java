@@ -12,7 +12,7 @@ public abstract class SumOfPowers {
      * @return The sum of all (xi - mean)^power of a list
      */
     public static double calculate(List<Double> list, int power) {
-        double listMean = Mean.calculate(list);
+        double listMean = new Mean(list).calculate();
         double sumOfPowers = 0;
 
         for (double value : list) {

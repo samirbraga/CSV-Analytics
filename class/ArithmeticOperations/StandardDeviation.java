@@ -1,14 +1,20 @@
 import java.util.List;
+import java.lang.Math;
 
-public class StandardDeviation extends ArithmeticOperation<Double> {
+/**
+ * The square root of the variance
+ */
+public class StandardDeviation extends ArithmeticOperation {
 
     public StandardDeviation(List<Double> list) {
         super(list);
     }
 
     @Override
-    public Double calculate() {
-        // IMPLEMENTAR
-        return -200.0;
+    public double calculate() {
+
+        ArithmeticOperation standard = new Variance(this.getList());
+
+        return Math.sqrt(standard.calculate());
     }
 }

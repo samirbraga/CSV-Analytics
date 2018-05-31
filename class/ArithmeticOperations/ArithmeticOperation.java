@@ -1,30 +1,33 @@
 import java.util.List;
 
 /**
- * Represents operations that returns values
+ * Represents operations that returns double values.
  */
-public abstract class ArithmeticOperation<T> {
+public abstract class ArithmeticOperation {
     
-    private List<?> list;
-    private List<?> optList;    // for multivariate metrics
+    private List<Double> list;
+    private List<Double> optList;    // for multivariate metrics
 
 
-    public ArithmeticOperation(List<?> list) {
+    public ArithmeticOperation(List<Double> list) {
         this.list = list;
     }
 
-    public ArithmeticOperation(List<?> list, List<?> optList) {
+    public ArithmeticOperation(List<Double> list, List<Double> optList) {
         this.list = list;
         this.optList = optList;
     }
 
-    public List<?> getList() {
+    public List<Double> getList() {
         return this.list;
     }
 
-    public List<?> getOptList() {
+    public List<Double> getOptList() {
         return this.optList;
     }
 
-    public abstract T calculate();
+    /**
+     * Commom method for all classes, calculates the specific metric.
+     */
+    public abstract double calculate();
 }
