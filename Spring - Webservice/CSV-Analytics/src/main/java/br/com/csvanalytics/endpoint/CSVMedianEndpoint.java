@@ -10,7 +10,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/calc")
 public class CSVMedianEndpoint {
-    @RequestMapping(method = RequestMethod.GET, path = "/fulldata")
+    @RequestMapping(method = RequestMethod.GET, path = "/median")
     public Map<String, Double> getFullDataFromColumns() {
         Map<String, Double> myMap = new HashMap<String, Double>();
         myMap.put("notas", 9.0);

@@ -10,6 +10,9 @@ class CalcPlainTable extends Component {
     }
 
     render() {
+        let { data } = this.props;
+        let dataKeys = Object.keys(this.props.data).map(k => k.toString());
+
         return (
             <Container fluid className={"mt-4" + this.props.className}>
                 <Row>
@@ -21,10 +24,10 @@ class CalcPlainTable extends Component {
                         <Table className="calc-plain-table my-2" >
                             <tbody>
                                 {
-                                    Object.keys(this.props.data).map((field, i) => (
+                                    dataKeys.map((field, i) => (
                                         <tr>
-                                            <th>{field}</th>
-                                            <td>{this.props.data[field]}</td>
+                                            <th>{field.toString()}</th>
+                                            <td>{data[field]}</td>
                                         </tr>
                                     ))
                                 }

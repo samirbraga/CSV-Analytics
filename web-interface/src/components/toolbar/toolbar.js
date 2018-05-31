@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import Ionicon from 'react-ionicons';
 
-import calcOptions from '../../data';
+import store from '../../store';
 
 import SlinButton from '../util/slin-button';
 import RoundButton from '../util/round-button';
@@ -21,7 +21,8 @@ class Toolbar extends Component {
         super(props);
 
         this.state = {
-            filteredCategories: calcOptions,
+            calcOptions: store.getState().calcOptions,
+            filteredCategories: store.getState().calcOptions,
             searching: false
         };
 
@@ -77,10 +78,10 @@ class Toolbar extends Component {
         searched = lint(searched);
 
         let filteredCategories = {};
-        let calcCategories = Object.keys(calcOptions);
+        let calcCategories = Object.keys(this.state.calcOptions);
         calcCategories.forEach(cat => {
             let selfSearchedItems = [];
-            selfSearchedItems = calcOptions[cat].filter(opt => {
+            selfSearchedItems = this.state.calcOptions[cat].filter(opt => {
                 return (new RegExp(searched, 'igu').test(lint(opt.name)) || new RegExp(searched, 'igu').test(lint(opt.key)));
             });
 

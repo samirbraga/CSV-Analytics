@@ -4,6 +4,8 @@ import Ionicon from 'react-ionicons';
 
 import LoadingOverlay from '../util/loading-overlay';
 
+import store from '../../store';
+
 import './table-plot.css';
 
 class TablePlot extends Component {
@@ -15,29 +17,28 @@ class TablePlot extends Component {
             records: [],
             header: []
         }
+
+        let csvData = store.getState().csv_data;
+        if (csvData) {
+            this.state = {
+                records: csvData.records,
+                header: csvData.header,
+                loading: false
+            };
+        } else if (localStorage.getItem('csv_data')) {
+            this.state = {
+                ...JSON.parse(localStorage.getItem('csv_data')),
+                loading: false
+            };
+        }
     }
 
-    componentDidMount() {
-        var myInit = {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default'
-        };
-
-        fetch('https://next.json-generator.com/api/json/get/Vy3jwfrkB', myInit)
-        .then(response => {
-            response.json().then(json => {
-                this.setState({
-                    records: json,
-                    header: Object.keys(json[0]).slice(1)
-                }, () => {
-                    setTimeout(() => {
-                        this.setState({
-                            loading: false
-                        });
-                    }, 500)
-                });
-            });
+    componentWillReceiveProps(newProps) {
+        let csvData = store.getState().csv_data;
+        this.setState({
+            records: csvData.records,
+            header: csvData.header,
+            loading: false
         });
     }
 
@@ -49,7 +50,7 @@ class TablePlot extends Component {
                     <thead>
                         <tr>
                             {this.state.header.map(title => (
-                                <th>{title}</th>
+                                <th key={title}>{title}</th>
                             ))}
                         </tr>
                     </thead>
@@ -57,7 +58,7 @@ class TablePlot extends Component {
                         {this.state.records.map(record => (
                             <tr>
                                 {this.state.header.map(title => (
-                                    <td>
+                                    <td key={record[title]} >
                                         {record[title]}
                                     </td>
                                 ))}

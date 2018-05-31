@@ -7,8 +7,9 @@ import './round-button.css';
 
 class RoundButton extends Component {
     render() {
+
         return (
-            <div {...this.props} className={"round-button " + this.props.className + (this.props.actived ? " active" : '')}>
+            <div {...{ ...this.props, actived: null }} className={"round-button " + this.props.className + (this.props.actived ? " active" : '')}>
                 <Ionicon icon={this.props.icon} color="white" />
             </div>
         );

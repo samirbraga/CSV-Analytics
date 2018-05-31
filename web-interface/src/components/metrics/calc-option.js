@@ -2,25 +2,40 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 import CalcPlainTable from './calc-plain-table';
 
-import calcOptions from '../../data';
+import store from '../../store';
 
 import './calc-style.css';
 import LoadingOverlay from '../util/loading-overlay';
-
-let calcs = [];
-
-for (let calc in calcOptions) {
-    calcs.push(...calcOptions[calc]);
-}
 
 
 class CalcOption extends Component {
     constructor(props) {
         super(props);
 
+        let calcs = [];
+        let { calcOptions } = store.getState();
+        for (let calc in calcOptions) {
+            calcs.push(...calcOptions[calc]);
+        }
+
+        let token = null;
+
+        if (store.getState().current_token) {
+            token = null;
+        } else if (localStorage.getItem('token')) {
+            try {
+                let aux = JSON.parse(localStorage.getItem('token'));
+                token = aux.token;
+            } catch(e) {
+                token = undefined;
+            }
+        }
         this.state = {
+            host: store.getState().api_host,
+            token: store.getState().current_token || token,
             loading: true,
             data: {},
+            calcs,
             calc: calcs.filter(calc => calc.key === props.calcKey)[0]
         }
 
@@ -30,23 +45,25 @@ class CalcOption extends Component {
     updateComponent(props) {
         var myInit = {
             method: 'GET',
-            mode: 'cors',
+            // mode: 'cors',
             cache: 'default'
         };
 
-        this.setState({
+        let self = this;
+        self.setState({
             loading: true
         });
 
-        fetch('https://next.json-generator.com/api/json/get/NyiwEdB1r?key=' + props.calcKey, myInit)
+        let calcs = self.state.calcs;
+        fetch(`${this.state.host}/api/calc/${props.calcKey}?token=${this.state.token}`, myInit)
         .then(response => {
             response.json().then(json => {
-                this.setState({
+                self.setState({
                     data: json,
                     calc: calcs.filter(calc => calc.key === props.calcKey)[0]
                 }, () => {
                     setTimeout(() => {
-                        this.setState({
+                        self.setState({
                             loading: false,
                         });
                     }, 300);
@@ -69,7 +86,11 @@ class CalcOption extends Component {
                 <LoadingOverlay loading={this.state.loading} />
                 <h3>{this.state.calc.name}</h3>
                 <hr/>
-                <CalcPlainTable data={this.state.data} />
+                {   
+                    this.state.data != {} ?
+                    <CalcPlainTable data={this.state.data} /> :
+                    ''
+                }
             </div>
         );
     }

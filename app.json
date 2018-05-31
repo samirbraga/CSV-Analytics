@@ -1,0 +1,15 @@
+{
+  "name": "CSV-Analytics",
+  "description": "Trabalho Final da Disciplina de Técnicas de Programação",
+  "scripts": {
+    "predeploy": "cd Spring\\ -\\ Webservice/CSV-Analytics"
+  },
+  "buildpacks": [],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
+}

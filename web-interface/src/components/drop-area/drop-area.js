@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import { withRouter } from 'react-router';
+import { Redirect } from 'react-router-dom';
 
-import (__dirname + '/drop-area.css');
+import store from '../../store';
+
+import './drop-area.css';
 
 class DropArea extends Component {
     constructor(props) {
@@ -65,9 +69,36 @@ class DropArea extends Component {
     sendFile() {
         let file = this.state.selectedFile;
 
-        window.location = '/CSV-Analytics/data-visualization';
+        let host = store.getState().api_host;
 
-        console.log(`${ file.name }, ${ file.size }`);
+        let data = new FormData();
+        data.append('file', file);
+
+        fetch(`${host}/api/upload-csv`, {
+            method: 'POST',
+            body: data
+        }).then(res => {
+            res.json().then(json => {
+                let csv_data = {
+                    header: json.header,
+                    records: json.records
+                };
+
+                store.dispatch({
+                    type: 'SET_CSV_DATA',
+                    payload: csv_data
+                });
+                store.dispatch({
+                    type: 'SET_TOKEN',
+                    payload: json.token[0]
+                });
+
+                localStorage.setItem('csv_data', JSON.stringify(csv_data));
+                localStorage.setItem('token', JSON.stringify({ token: json.token[0] }));
+
+                this.props.history.push('/CSV-Analytics/data-visualization');
+            });
+        });
     }
 
     render() {
@@ -89,4 +120,4 @@ class DropArea extends Component {
     }
 }
 
-export default DropArea;
+export default withRouter(DropArea);

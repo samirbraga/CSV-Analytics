@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { Container, Row, Col } from 'reactstrap';
 
 import Toolbar from '../toolbar/toolbar';
 import DataView from '../data-view/data-view';
 
 class PanelPage extends Component {
+    componentWillMount() {
+        if (!localStorage.getItem('token') || !localStorage.getItem('csv_data')) {
+            this.props.history.push('/CSV-Analytics');
+        }
+    }
+
     render() {
         return (
             <Container fluid className="h-100">
@@ -21,4 +28,4 @@ class PanelPage extends Component {
     }
 }
 
-export default PanelPage;
+export default withRouter(PanelPage);
