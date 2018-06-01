@@ -19,12 +19,12 @@ class DropArea extends Component {
             selectedFile: null
         };
 
-        this.dragStart = this.dragStart.bind(this);
-        this.dragEnd = this.dragEnd.bind(this);
+        this.dragStart             = this.dragStart.bind(this);
+        this.dragEnd               = this.dragEnd.bind(this);
         this.showChooserFileWindow = this.showChooserFileWindow.bind(this);
-        this.getDroppedFile = this.getDroppedFile.bind(this);
-        this.chooseFile = this.chooseFile.bind(this);
-        this.sendFile = this.sendFile.bind(this);
+        this.getDroppedFile        = this.getDroppedFile.bind(this);
+        this.chooseFile            = this.chooseFile.bind(this);
+        this.sendFile              = this.sendFile.bind(this);
     }
 
     dragStart(e) {
@@ -97,7 +97,7 @@ class DropArea extends Component {
                 localStorage.setItem('token', JSON.stringify({ token: json.token[0] }));
 
                 this.props.history.push('/CSV-Analytics/data-visualization');
-            });
+            }).catch(e => console.log(e));
         });
     }
 
