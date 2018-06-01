@@ -13,7 +13,7 @@ import java.util.Map;
 @RequestMapping("api/calc")
 public class CSVScatterplotEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/scatterplot")
-    public Map<String, Double> queryMethod(@RequestParam String token) {
+    public Map<String, Object> queryMethod(@RequestParam String token) {
         System.out.println("token=" + token);
         if (Session.checkExistence(token)){
             Map<String, Double> myMap = new HashMap<String, Double>();
@@ -21,6 +21,9 @@ public class CSVScatterplotEndpoint {
             return myMap;
         }
 
-        return null;
+        Map fallback = new HashMap<String, String>();
+        fallback.put("status", "error");
+        fallback.put("message", "Token not found.");
+        return fallback;
     }
 }

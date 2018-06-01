@@ -12,7 +12,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/calc")
 public class CSVVarianceEndpoint {
-    @RequestMapping(method = RequestMethod.GET, path = "/Variance")
+    @RequestMapping(method = RequestMethod.GET, path = "/variance")
     public Map<String, Double> queryMethod(@RequestParam String token) {
         System.out.println("token=" + token);
         if (Session.checkExistence(token)) {

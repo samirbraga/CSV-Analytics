@@ -10,7 +10,9 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -49,6 +51,22 @@ public class CSVReaderEndpoint {
         String[] tokens = {""};
         tokens[0] = new RandomString().nextString();
         data.put("token", tokens);
+
+        List qualitatives = new ArrayList<String>();
+        List quantitatives = new ArrayList<Double>();
+
+        for (int i = 0; i < header.length; i++) {
+            try {
+                quantitatives.add(Double.parseDouble(records[0][i]));
+            } catch (Exception e) {
+                qualitatives.add(records[0][i]);
+            }
+        }
+
+
+        String[] qualitArr = new String[qualitatives.size()];
+        qualitArr = qualitatives.toArray(qualitArr);
+        data.put("qualitatives", );
 
         Session.putSession(tokens[0], data);
 
