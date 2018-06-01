@@ -37,3 +37,13 @@ Utilizamos o padrão Observer para representar a interface entre *WSView* e *CSV
 - **Strategy**
 
 O padrão Strategy foi utilizado para representar as diferentes estratégias de manipulação dos dados. Cada tipo de operação (*ArithmeticOperation*, *GrapichOperation* ou *Mode*) implementa o padrão em suas subclasses. Este padrão foi escolhido pois permite que os algoritmos variem de forma independente, e que o cliente *CSVController* escolha em tempo de execução qual deles deseja utilizar.
+
+## Características
+
+Optamos por criar um Web Sevice em Java utilizando o Framework Spring Boot, nele recebemos os arquivos CSVs via requisição POST e calculamos todas as métricas.
+
+- **Técnologias**	
+Spring Boot Documentação: https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/
+
+- **Organização de arquivos**
+1- 	

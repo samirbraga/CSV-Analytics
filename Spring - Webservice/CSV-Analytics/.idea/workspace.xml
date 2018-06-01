@@ -64,10 +64,10 @@
       <file leaf-file-name="ApplicationStart.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/ApplicationStart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+            <state relative-caret-position="45">
+              <caret line="3" column="56" lean-forward="true" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#811#997#0" expanded="true" />
                 <element signature="e#996#997#0" expanded="true" />
               </folding>
             </state>
@@ -354,12 +354,12 @@
       <workItem from="1527594119971" duration="845000" />
       <workItem from="1527608011709" duration="10439000" />
       <workItem from="1527635519621" duration="6449000" />
-      <workItem from="1527775695851" duration="4193000" />
+      <workItem from="1527775695851" duration="4670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31265000" />
+    <option name="totallyTimeSpent" value="31742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
@@ -371,7 +371,7 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.1652575" side_tool="true" visible="true" weight="0.5630631" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8347425" visible="true" weight="0.5630631" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8347425" weight="0.5630631" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
@@ -754,10 +754,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/ApplicationStart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        <state relative-caret-position="45">
+          <caret line="3" column="56" lean-forward="true" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#811#997#0" expanded="true" />
             <element signature="e#996#997#0" expanded="true" />
           </folding>
         </state>
