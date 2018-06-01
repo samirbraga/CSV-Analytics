@@ -4,12 +4,5 @@
   "scripts": {
     "predeploy": "cd Spring\\ -\\ Webservice/CSV-Analytics"
   },
-  "buildpacks": [],
-  "environments": {
-    "test": {
-      "scripts": {
-        "test": "bundle exec rake test"
-      }
-    }
-  }
+  "image": "heroku/java"
 }

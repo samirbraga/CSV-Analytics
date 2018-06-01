@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 let initialState = {
-    "api_host": "http://localhost:8080",
+    "api_host": "https://csv-analytics.herokuapp.com",
     "current_token": "",
     "csv_data": null,
     "calcOptions": {
