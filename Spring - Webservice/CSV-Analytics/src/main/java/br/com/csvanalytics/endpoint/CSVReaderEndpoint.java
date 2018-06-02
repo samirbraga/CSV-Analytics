@@ -52,21 +52,25 @@ public class CSVReaderEndpoint {
         tokens[0] = new RandomString().nextString();
         data.put("token", tokens);
 
-        List qualitatives = new ArrayList<String>();
-        List quantitatives = new ArrayList<Double>();
+        List<String> qualitatives = new ArrayList<String>();
+        List<String> quantitatives = new ArrayList<String>();
 
         for (int i = 0; i < header.length; i++) {
             try {
-                quantitatives.add(Double.parseDouble(records[0][i]));
+                Double aux = Double.parseDouble(records[0][i]);
+                quantitatives.add(header[i]);
             } catch (Exception e) {
-                qualitatives.add(records[0][i]);
+                qualitatives.add(header[i]);
             }
         }
 
-
         String[] qualitArr = new String[qualitatives.size()];
         qualitArr = qualitatives.toArray(qualitArr);
-        data.put("qualitatives", );
+        data.put("qualitatives", qualitArr);
+
+        String[] quantitArr = new String[quantitatives.size()];
+        quantitArr = quantitatives.toArray(quantitArr);
+        data.put("quantitatives", quantitArr);
 
         Session.putSession(tokens[0], data);
 

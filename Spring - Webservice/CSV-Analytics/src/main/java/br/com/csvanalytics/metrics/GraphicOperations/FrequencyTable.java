@@ -1,3 +1,5 @@
+package br.com.csvanalytics.metrics.GraphicOperations;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
