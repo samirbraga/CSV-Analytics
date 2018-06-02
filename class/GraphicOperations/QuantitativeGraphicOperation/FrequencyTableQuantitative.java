@@ -6,10 +6,10 @@ import java.util.Iterator;
 import java.lang.Math;
 import java.text.DecimalFormat;
 
-class FrequencyTable extends QuantitativeGraphicOperation{
+class FrequencyTableQuantitative extends QuantitativeGraphicOperation{
 
 
-    public FrequencyTable(String[] labels, List<Map> data){
+    public FrequencyTableQuantitative(String[] labels, List<Map> data){
         super(labels,data);
     }
 
