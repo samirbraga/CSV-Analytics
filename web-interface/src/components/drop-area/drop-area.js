@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import store from '../../store';
 
 import './drop-area.css';
+import LoadingOverlay from '../util/loading-overlay';
 
 class DropArea extends Component {
     constructor(props) {
@@ -16,7 +17,8 @@ class DropArea extends Component {
 
         this.state = {
             dragging: false,
-            selectedFile: null
+            selectedFile: null,
+            loading: false
         };
 
         this.dragStart             = this.dragStart.bind(this);
@@ -74,6 +76,10 @@ class DropArea extends Component {
         let data = new FormData();
         data.append('file', file);
 
+        this.setState({
+            loading: true
+        });
+        
         fetch(`${host}/api/upload-csv`, {
             method: 'POST',
             body: data
@@ -110,11 +116,15 @@ class DropArea extends Component {
                 onDrop={this.getDroppedFile}
                 className="drop-area w-100 h-100">
                 <input type="file" onChange={this.chooseFile} ref={this.inputFile} name="csv-file" id="csv-file" hidden />
-                <div
-                    className="overlay-darker"></div>
-                <div
-                    onClick={this.showChooserFileWindow} 
-                    className="overlay-line"></div>
+                <LoadingOverlay darker={true} loading={this.state.loading} />
+                <div className="overlay-darker"></div>
+                { 
+                    !this.state.loading ?
+                    <div
+                        onClick={this.showChooserFileWindow} 
+                        className="overlay-line"></div> :
+                    ''
+                }
             </div>
         );
     }

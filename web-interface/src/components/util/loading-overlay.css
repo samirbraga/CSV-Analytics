@@ -6,6 +6,12 @@
     z-index: 100;
 }
 
+.loading-overlay.darker {
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.7);
+}
+
 .loading-overlay svg {
     opacity: 0.7;
     animation: fading 1.4s ease-in 0s infinite;

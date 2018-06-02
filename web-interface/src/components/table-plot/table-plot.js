@@ -15,22 +15,29 @@ class TablePlot extends Component {
         this.state = {
             loading: true,
             records: [],
-            header: []
+            header: [],
+            loadedRows: 50
         }
 
         let csvData = store.getState().csv_data;
         if (csvData) {
             this.state = {
+                ...this.state,
                 records: csvData.records,
                 header: csvData.header,
                 loading: false
             };
         } else if (localStorage.getItem('csv_data')) {
             this.state = {
+                ...this.state,
                 ...JSON.parse(localStorage.getItem('csv_data')),
                 loading: false
             };
         }
+
+        this.dataTable = React.createRef();
+
+        this.loadedOnEndScroll = this.loadedOnEndScroll.bind(this);
     }
 
     componentWillReceiveProps(newProps) {
@@ -42,9 +49,20 @@ class TablePlot extends Component {
         });
     }
 
+    loadedOnEndScroll(e) {
+        let dataTable = e.target;
+        let oldLoadedRows = this.state.loadedRows;
+
+        if (dataTable.scrollHeight - dataTable.scrollTop === dataTable.clientHeight) {
+            this.setState({
+                loadedRows: oldLoadedRows + 50
+            });
+        }
+    }
+
     render() {
         return (
-            <div className="data-table">
+            <div ref={this.dataTable} onScroll={this.loadedOnEndScroll} className="data-table">
                 <LoadingOverlay loading={this.state.loading} />
                 <Table>
                     <thead>
@@ -55,7 +73,7 @@ class TablePlot extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.records.map(record => (
+                        {this.state.records.slice(0, this.state.loadedRows).map((record, i) => (
                             <tr>
                                 {this.state.header.map(title => (
                                     <td key={record[title]} >

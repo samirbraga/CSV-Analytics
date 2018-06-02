@@ -15,8 +15,13 @@ class LoadingOverlay extends Component {
     render() {
         return (
             <div 
-                className={"loading-overlay justify-content-center align-items-center " + (this.props.loading ? ' d-flex' : 'd-none')}>
-                <Ionicon icon="md-grid" color="black" fontSize="40px" />
+                className={"loading-overlay justify-content-center align-items-center "
+                 + (this.props.loading ? ' d-flex' : 'd-none')
+                 + (this.props.darker ? ' darker' : '')
+                 }>
+                <Ionicon icon="md-grid"
+                    color={this.props.darker ? 'white' : 'black'}
+                    fontSize={this.props.darker ? '60px' : '40px'}  />
             </div>
         );
     }
