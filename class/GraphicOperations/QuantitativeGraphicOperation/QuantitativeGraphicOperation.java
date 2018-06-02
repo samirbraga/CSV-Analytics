@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.Map;
-//Essa classe deve importar a classe GraphicOperations ques está na pasta QualitativeGraphicOperation
+//Essa classe deve importar a classe GraphicOperations.
 public abstract class QuantitativeGraphicOperation extends GraphicOperation{
 
 	public QuantitativeGraphicOperation(String[] labels, List<Map> data){
