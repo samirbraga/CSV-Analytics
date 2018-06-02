@@ -1,16 +1,17 @@
 package br.com.csvanalytics.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.csvanalytics.metrics.ArithmeticOperations.Covariance;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Kurtosis;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Max;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Mean;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Median;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
+import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
 import br.com.csvanalytics.model.Session;
 
 public class CSVController {
@@ -169,6 +170,34 @@ public class CSVController {
 	// 		return covariance;
 	// 	}
 	// }
+
+	public static Map contingencyTableCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map contingencyTable = null;
+		contingencyTable = (Map) selectedSession.get("contingencyTable");
+		if (contingencyTable != null) {
+			return contingencyTable;
+		} else {
+			contingencyTable = new HashMap<String, Map>();
+			String[] header = (String[]) selectedSession.get("header");
+			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
+			String[] qualitatives = (String[]) selectedSession.get("qualitatives");
+
+			for (String title : qualitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<String> columnData = Arrays.asList(column);
+
+				ContingencyTable contingencyTableCalc = new ContingencyTable(qualitatives, records, title);
+
+				contingencyTable.put(title, contingencyTableCalc.calculate());
+			}
+
+			Session.updateSession(token, "contingencyTable", contingencyTable);
+
+			return contingencyTable;
+		}
+	}
 
 	static String[] selectColumn(String title, Map<String, Object[]> session) {
 		Map[] records = (Map[]) session.get("records");

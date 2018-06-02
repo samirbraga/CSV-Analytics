@@ -31,6 +31,7 @@
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVSkewnessEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVFrequencyTableEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/PearsonCoefficient.java
+/mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVContingencyTableEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVGraphicBarEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/view/WSView.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/GraphicOperation.java

@@ -6,6 +6,7 @@ import store from '../../store';
 
 import './calc-style.css';
 import LoadingOverlay from '../util/loading-overlay';
+import CalcContingencyTable from './calc-contingency-table';
 
 
 class CalcOption extends Component {
@@ -81,16 +82,48 @@ class CalcOption extends Component {
     }
 
     render() {
+        let calc = null;
+        if (this.state.calc.type === 'metrics') {
+            calc = (
+                <span>
+                    <h3>{this.state.calc.name}</h3>
+                    <hr />
+                    {
+                        this.state.data != {} ?
+                        <CalcPlainTable data={this.state.data} /> :
+                        ''
+                    }
+                </span>
+            );
+        } else if (this.state.calc.type === 'graphic-qualitatives') {
+            if (this.state.calc.key === 'contingency-table') {
+                calc = (
+                    <div>
+                        <div>
+                            <span class="text-muted h6" >CAMPOS:</span>
+                            <div class="d-inline-block ml-3">
+                                {Object.keys(this.state.data).map(table => (
+                                    <a className='mr-3' href='javascript:void(0)' onClick={() => {
+                                        document.querySelector('#' + table).scrollIntoView(true);
+                                    }} >{table}</a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+
+                            return <CalcContingencyTable id={table} className={'pt-4 mb-3'} data={data} table={table} />;  
+                        })}
+                    </div>
+                )
+            }
+        }
+
         return (
             <div className="calc-container p-4">
                 <LoadingOverlay loading={this.state.loading} />
-                <h3>{this.state.calc.name}</h3>
-                <hr/>
-                {   
-                    this.state.data != {} ?
-                    <CalcPlainTable data={this.state.data} /> :
-                    ''
-                }
+                {calc}
             </div>
         );
     }

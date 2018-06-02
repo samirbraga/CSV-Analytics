@@ -15,7 +15,6 @@ import br.com.csvanalytics.model.Session;
 public class CSVMedianEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/median")
     public Map<String, Double> queryMethod(@RequestParam String token) {
-        System.out.println("token=" + token);
         if (Session.checkExistence(token)) {
             Map<String, Double> median = CSVController.medianCalculate(token);
             return median;

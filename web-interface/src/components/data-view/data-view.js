@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { Switch, Route, NavLink } from 'react-router-dom';
+import Ionicon from 'react-ionicons';
 
 import store from '../../store';
 
@@ -14,9 +16,12 @@ let DynamicTitle = function (props) {
         <Switch>
             {props.routes.map(calc => {
                 let Comp = () => (
-                    <NavLink to={"/CSV-Analytics/data-visualization/" + calc.key} >
-                        {calc.name}
-                    </NavLink>
+                    <span>
+                        &nbsp;<Ionicon className="align-text-top" icon="ios-arrow-forward" color="#666666" fontSize="22px" />&nbsp;
+                        <NavLink to={"/CSV-Analytics/data-visualization/" + calc.key} >
+                            {calc.name}
+                        </NavLink>
+                    </span>
                 )
                 return (
                     <Route key={calc.key} path={"/CSV-Analytics/data-visualization/" + calc.key} component={Comp}></Route>
@@ -37,19 +42,32 @@ class DataView extends Component {
         this.state = {
             routes
         };
+
+        this.uploadOtherFile = this.uploadOtherFile.bind(this);
+    }
+
+    uploadOtherFile() {
+        localStorage.removeItem('csv_data');
+        localStorage.removeItem('token');
+
+        this.props.history.push('/CSV-Analytics');
     }
 
     render() {
         return (
             <div className="data-view d-flex flex-column">
-                <div className="data-view-header py-4 px-3">
-                    <h2>
-                        <NavLink to="/CSV-Analytics/data-visualization" >
-                            VISUALIZAÇÃO DOS DADOS
-                        </NavLink>
-                        &nbsp;>&nbsp;
-                        <DynamicTitle routes={this.state.routes} />
-                    </h2>
+                <div className="data-view-header px-3">
+                    <div className="float-left">
+                        <h2 className="my-0">
+                            <NavLink to="/CSV-Analytics/data-visualization" >
+                                VISUALIZAÇÃO DOS DADOS
+                            </NavLink>
+                            <DynamicTitle routes={this.state.routes} />
+                        </h2>
+                    </div>
+                    <div className="float-right">
+                        <button onClick={this.uploadOtherFile} className={"btn"} >ANALISAR OUTRO <strong>CSV</strong></button>
+                    </div>
                 </div>
                 <Route render={({ location }) => (
                     <Switch>
@@ -64,4 +82,4 @@ class DataView extends Component {
     }
 }
 
-export default DataView;
+export default withRouter(DataView);

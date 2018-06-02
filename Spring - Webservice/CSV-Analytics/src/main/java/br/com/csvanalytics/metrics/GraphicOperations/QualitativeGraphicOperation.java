@@ -9,5 +9,5 @@ public abstract class QualitativeGraphicOperation extends GraphicOperation {
 		super(labels, data);
 	}
 
-	public abstract List calculate();
+	public abstract Object calculate();
 }

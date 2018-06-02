@@ -15,7 +15,6 @@ import br.com.csvanalytics.model.Session;
 public class CSVKurtosisEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/kurtosis")
     public Map<String, Double> queryMethod(@RequestParam String token) {
-        System.out.println("token=" + token);
         if (Session.checkExistence(token)) {
             Map<String, Double> kurtosis = CSVController.kurtosisCalculate(token);
             return kurtosis;

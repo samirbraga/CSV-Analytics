@@ -22,7 +22,6 @@ public class Session {
 
 		if (aux != null) {
 			return true;
-
 		} else {
 			return false;
 		}

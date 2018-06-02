@@ -1,86 +1,104 @@
 import { createStore } from 'redux';
 
 let initialState = {
-    "api_host": "https://csv-analytics.herokuapp.com",
+    "api_host": "http://localhost:8080",
     "current_token": "",
     "csv_data": null,
     "calcOptions": {
         "metrics": [
             {
                 key: 'average',
-                name: 'MÉDIA'
+                name: 'MÉDIA',
+                type: 'metrics'
             },
             {
                 key: 'median',
-                name: 'MEDIANA'
+                name: 'MEDIANA',
+                type: 'metrics'
             },
             {
                 key: 'kurtosis',
-                name: 'KURTOSIS'
+                name: 'KURTOSIS',
+                type: 'metrics'
             },
             {
                 key: 'variance',
-                name: 'VARIÂNCIA'
+                name: 'VARIÂNCIA',
+                type: 'metrics'
             },
             {
                 key: 'standart-deviation',
-                name: 'DESVIO PADRÃO'
+                name: 'DESVIO PADRÃO',
+                type: 'metrics'
             },
             {
                 key: 'min',
-                name: 'MÍNIMO'
+                name: 'MÍNIMO',
+                type: 'metrics'
             },
             {
                 key: 'max',
-                name: 'MÁXIMO'
+                name: 'MÁXIMO',
+                type: 'metrics'
             },
             {
                 key: 'skewness',
-                name: 'SKEWNESS'
+                name: 'SKEWNESS',
+                type: 'metrics'
             },
             {
                 key: 'covariance',
-                name: 'COVARIÂNCIA'
+                name: 'COVARIÂNCIA',
+                type: 'metrics'
             },
             {
                 key: 'mode',
-                name: 'MODA'
+                name: 'MODA',
+                type: 'metrics'
             },
             {
                 key: 'correlation-coefficient',
-                name: 'COEFICIENTE DE CORRELAÇÃO'
+                name: 'COEFICIENTE DE CORRELAÇÃO',
+                type: 'metrics'
             }
         ],
         "graphic-qualitatives": [
             {
                 key: 'frequency-table',
-                name: 'TABELA DE FREQUÊNCIA'
+                name: 'TABELA DE FREQUÊNCIA',
+                type: 'graphic-qualitatives'
             },
             {
                 key: 'graphic-bar',
-                name: 'GRÁFICO DE BARRA'
+                name: 'GRÁFICO DE BARRA',
+                type: 'graphic-qualitatives'
             },
             {
                 key: 'contingency-table',
-                name: 'TABELA DE CONTINGÊNCIA'
+                name: 'TABELA DE CONTINGÊNCIA',
+                type: 'graphic-qualitatives'
             }
         ],
         "graphic-quantitatives": [
             {
                 key: 'histogram',
-                name: 'HISTOGRAMA'
+                name: 'HISTOGRAMA',
+                type: 'graphic-quantitatives'
             },
             {
                 key: 'boxplot',
-                name: 'BOXPLOT'
+                name: 'BOXPLOT',
+                type: 'graphic-quantitatives'
             },
             {
                 key: 'scatterplot',
-                name: 'SCATTERPLOT'
+                name: 'SCATTERPLOT',
+                type: 'graphic-quantitatives'
             },
             {
                 key: 'contingency-table',
-                name: 'TABELA DE CONTINGÊNCIA'
+                name: 'TABELA DE CONTINGÊNCIA',
+                type: 'graphic-quantitatives'
             }
         ]
     }
