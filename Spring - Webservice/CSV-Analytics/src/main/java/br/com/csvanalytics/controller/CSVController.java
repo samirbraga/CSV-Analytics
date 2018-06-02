@@ -5,7 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.csvanalytics.metrics.ArithmeticOperations.*;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Covariance;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Kurtosis;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Max;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Mean;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Median;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
 import br.com.csvanalytics.model.Session;
 
 public class CSVController {
@@ -60,6 +65,110 @@ public class CSVController {
 			return min;
 		}
 	}
+
+	public static Map<String, Double> maxCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map max = null;
+		max = (Map) selectedSession.get("max");
+		if (max != null) {
+			return max;
+		} else {
+			max = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				Max maxCalc = new Max(columnData);
+
+				max.put(title, maxCalc.calculate());
+			}
+
+			Session.updateSession(token, "max", max);
+
+			return max;
+		}
+	}
+
+	public static Map<String, Double> medianCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map median = null;
+		median = (Map) selectedSession.get("median");
+		if (median != null) {
+			return median;
+		} else {
+			median = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				Median medianCalc = new Median(columnData);
+
+				median.put(title, medianCalc.calculate());
+			}
+
+			Session.updateSession(token, "median", median);
+
+			return median;
+		}
+	}
+
+	public static Map<String, Double> kurtosisCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map kurtosis = null;
+		kurtosis = (Map) selectedSession.get("kurtosis");
+		if (kurtosis != null) {
+			return kurtosis;
+		} else {
+			kurtosis = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				Kurtosis kurtosisCalc = new Kurtosis(columnData);
+
+				kurtosis.put(title, kurtosisCalc.calculate());
+			}
+
+			Session.updateSession(token, "kurtosis", kurtosis);
+
+			return kurtosis;
+		}
+	}
+
+	// public static Map<String, Double> covarianceCalculate(String token) {
+	// 	Map selectedSession = Session.getSession(token);
+
+	// 	Map covariance = null;
+	// 	covariance = (Map) selectedSession.get("covariance");
+	// 	if (covariance != null) {
+	// 		return covariance;
+	// 	} else {
+	// 		covariance = new HashMap<String, Map>();
+	// 		String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+	// 		for (String title : quantitatives) {
+	// 			String[] column = selectColumn(title, selectedSession);
+	// 			List<Double> columnData = convertColumnToDouble(column);
+
+	// 			Covariance covarianceCalc = new Covariance(columnData);
+
+	// 			covariance.put(title, covarianceCalc.calculate());
+	// 		}
+
+	// 		Session.updateSession(token, "covariance", covariance);
+
+	// 		return covariance;
+	// 	}
+	// }
 
 	static String[] selectColumn(String title, Map<String, Object[]> session) {
 		Map[] records = (Map[]) session.get("records");

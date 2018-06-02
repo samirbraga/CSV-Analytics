@@ -24,11 +24,4 @@ public class CSVAvaregeEndpoint {
 
         return null;
     }
-
-
-//    public Map<String, Double> getAverageFromColumns() {
-//        Map<String, Double> myMap = new HashMap<String, Double>();
-//        myMap.put("notas", 9.0);
-//        return myMap;
-//    }
 }
