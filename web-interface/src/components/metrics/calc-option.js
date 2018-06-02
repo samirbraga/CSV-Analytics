@@ -7,6 +7,11 @@ import store from '../../store';
 import './calc-style.css';
 import LoadingOverlay from '../util/loading-overlay';
 import CalcContingencyTable from './calc-contingency-table';
+import FieldsNav from './fields-nav';
+import CalcQuantitativeFrequencyTable from './calc-quantitative-frequency-table';
+import CalcQualitativeFrequencyTable from './calc-qualitative-frequency-table';
+import CalcHistogram from './calc-histogram';
+import CalcGraphicBar from './calc-graphic-bar';
 
 
 class CalcOption extends Component {
@@ -99,16 +104,7 @@ class CalcOption extends Component {
             if (this.state.calc.key === 'contingency-table') {
                 calc = (
                     <div>
-                        <div>
-                            <span class="text-muted h6" >CAMPOS:</span>
-                            <div class="d-inline-block ml-3">
-                                {Object.keys(this.state.data).map(table => (
-                                    <a className='mr-3' href='javascript:void(0)' onClick={() => {
-                                        document.querySelector('#' + table).scrollIntoView(true);
-                                    }} >{table}</a>
-                                ))}
-                            </div>
-                        </div>
+                        <FieldsNav data={this.state.data} />
 
                         {Object.keys(this.state.data).map((table) => {
                             let data = this.state.data[table];
@@ -116,7 +112,59 @@ class CalcOption extends Component {
                             return <CalcContingencyTable id={table} className={'pt-4 mb-3'} data={data} table={table} />;  
                         })}
                     </div>
-                )
+                );
+            } else if (this.state.calc.key === 'qualitative-frequency-table') {
+                calc = (
+                    <div>
+                        <FieldsNav data={this.state.data} />
+
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+
+                            return <CalcQualitativeFrequencyTable id={table} className={'pt-4 mb-3'} data={data} table={table} />;
+                        })}
+                    </div>
+                );  
+            } else if (this.state.calc.key === 'graphic-bar') {
+                calc = (
+                    <div>
+                        <FieldsNav data={this.state.data} />
+
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+                            return <CalcGraphicBar id={table} className={'pt-4 mb-3'} data={data} table={table} />;
+                        })}
+                    </div>
+                );
+            }
+        } else if (this.state.calc.type === 'graphic-quantitatives') {
+            if (this.state.calc.key === 'quantitative-frequency-table') {
+                calc = (
+                    <div>
+                        <FieldsNav data={this.state.data} />
+
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+
+                            return (
+                                <CalcQuantitativeFrequencyTable id={table} className={'pt-4 mb-3'} data={data} table={table} />
+                            );
+                        })}
+                    </div>
+                );
+            } else if (this.state.calc.key === 'histogram') {
+                calc = (
+                    <div>
+                        <FieldsNav data={this.state.data} />
+
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+                            return (
+                                <CalcHistogram id={table} className={'pt-4 mb-3'} data={data} table={table} />
+                            );
+                        })}
+                    </div>
+                );
             }
         }
 

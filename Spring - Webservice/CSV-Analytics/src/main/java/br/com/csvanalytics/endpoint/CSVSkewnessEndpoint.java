@@ -17,9 +17,8 @@ public class CSVSkewnessEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/skewness")
     public Map<String, Double> queryMethod(@RequestParam String token) {
         if (Session.checkExistence(token)) {
-            Map<String, Double> myMap = new HashMap<String, Double>();
-            myMap.put(token, 9.0);
-            return myMap;
+            Map<String, Double> skewness = CSVController.skewnessCalculate(token);
+            return skewness;
         }
 
         return null;

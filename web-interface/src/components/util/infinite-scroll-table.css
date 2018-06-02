@@ -1,0 +1,24 @@
+.scrollable {
+    position: relative;
+    max-height: 500px;
+    overflow: auto;
+}
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+.scrollable::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .3); 
+}
+
+.scrollable:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .6); 
+}
+
+
+.scrollable table {
+    background: transparent !important;
+}
+.scrollable table tbody {
+    position: relative;
+}

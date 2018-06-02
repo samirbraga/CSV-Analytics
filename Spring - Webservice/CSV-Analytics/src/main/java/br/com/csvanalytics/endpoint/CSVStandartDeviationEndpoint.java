@@ -1,5 +1,6 @@
 package br.com.csvanalytics.endpoint;
 
+import br.com.csvanalytics.controller.CSVController;
 import br.com.csvanalytics.model.Session;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,12 +14,10 @@ import java.util.Map;
 @RequestMapping("api/calc")
 public class CSVStandartDeviationEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/standart-deviation")
-    public Map<String, Double> queryMethod(@RequestParam String hash) {
-        System.out.println("id=" + hash);
-        if (Session.checkExistence(hash)){
-            Map<String, Double> myMap = new HashMap<String, Double>();
-            myMap.put(hash, 9.0);
-            return myMap;
+    public Map<String, Double> queryMethod(@RequestParam String token) {
+        if (Session.checkExistence(token)) {
+            Map<String, Double> StandartDeviation = CSVController.standardDeviationCalculate(token);
+            return StandartDeviation;
         }
 
         return null;

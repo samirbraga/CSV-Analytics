@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 let initialState = {
-    "api_host": "http://localhost:8080",
+    "api_host": "https://csv-analytics.herokuapp.com",
     "current_token": "",
     "csv_data": null,
     "calcOptions": {
@@ -64,7 +64,7 @@ let initialState = {
         ],
         "graphic-qualitatives": [
             {
-                key: 'frequency-table',
+                key: 'qualitative-frequency-table',
                 name: 'TABELA DE FREQUÊNCIA',
                 type: 'graphic-qualitatives'
             },
@@ -96,8 +96,8 @@ let initialState = {
                 type: 'graphic-quantitatives'
             },
             {
-                key: 'contingency-table',
-                name: 'TABELA DE CONTINGÊNCIA',
+                key: 'quantitative-frequency-table',
+                name: 'TABELA DE FREQUÊNCIA',
                 type: 'graphic-quantitatives'
             }
         ]

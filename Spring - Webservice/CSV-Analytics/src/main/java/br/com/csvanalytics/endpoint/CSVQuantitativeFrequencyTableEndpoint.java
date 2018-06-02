@@ -14,13 +14,13 @@ import br.com.csvanalytics.model.Session;
 @RestController
 @RequestMapping("api/calc")
 public class CSVQuantitativeFrequencyTableEndpoint {
-    @RequestMapping(method = RequestMethod.GET, path = "/frequency-table-2")
+    @RequestMapping(method = RequestMethod.GET, path = "/quantitative-frequency-table")
     public Map<String, List> queryMethod(@RequestParam String token) {
         if (Session.checkExistence(token)) {
-            Map<String, List> average = CSVController.quantitativeFrequencyTableCalculate(token);
-            return average;
+            Map<String, List> frequencyTable = CSVController.quantitativeFrequencyTableCalculate(token);
+            return frequencyTable;
         }
 
         return null;
-    }
+    }   
 }

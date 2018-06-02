@@ -16,3 +16,7 @@
 .calc-container .calc-plain-table tbody tr:nth-child(1) th {
     border-top: 0;
 }
+
+.calc-container .calc-plain-table tfoot td {
+    font-weight: bold;
+}

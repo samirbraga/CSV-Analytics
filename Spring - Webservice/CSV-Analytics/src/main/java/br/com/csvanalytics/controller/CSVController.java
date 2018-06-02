@@ -6,11 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.csvanalytics.metrics.ArithmeticOperations.Covariance;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Kurtosis;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Max;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Mean;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Median;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
+import br.com.csvanalytics.metrics.ArithmeticOperations.PearsonCoefficient;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Skewness;
+import br.com.csvanalytics.metrics.ArithmeticOperations.StandardDeviation;
+import br.com.csvanalytics.metrics.ArithmeticOperations.SumOfPowers;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Variance;
 import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.QuantitativeFrequencyTable;
@@ -147,31 +153,185 @@ public class CSVController {
 		}
 	}
 
-	// public static Map<String, Double> covarianceCalculate(String token) {
-	// 	Map selectedSession = Session.getSession(token);
+	public static Map covarianceCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+		String[] quantitatives = (String[]) selectedSession.get("quantitatives");
 
-	// 	Map covariance = null;
-	// 	covariance = (Map) selectedSession.get("covariance");
-	// 	if (covariance != null) {
-	// 		return covariance;
-	// 	} else {
-	// 		covariance = new HashMap<String, Map>();
-	// 		String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+		if (quantitatives.length >= 2) {
+			Map covariance = null;
+			covariance = (Map) selectedSession.get("covariance");
+			if (covariance != null) {
+				return covariance;
+			} else {
+				covariance = new HashMap<String, Map>();
 
-	// 		for (String title : quantitatives) {
-	// 			String[] column = selectColumn(title, selectedSession);
-	// 			List<Double> columnData = convertColumnToDouble(column);
+				for (String title : quantitatives) {
+					for (String title2 : quantitatives) {
+						if (!title.equals(title2)) {
+							String[] column = selectColumn(title, selectedSession);
+							List<Double> columnData = convertColumnToDouble(column);
+							String[] column2 = selectColumn(title2, selectedSession);
+							List<Double> columnData2 = convertColumnToDouble(column);
 
-	// 			Covariance covarianceCalc = new Covariance(columnData);
+							Covariance covarianceCalc = new Covariance(columnData, columnData2);
 
-	// 			covariance.put(title, covarianceCalc.calculate());
-	// 		}
+							covariance.put(title + ", " + title2, covarianceCalc.calculate());
+						}
+					}
+				}
 
-	// 		Session.updateSession(token, "covariance", covariance);
+				Session.updateSession(token, "covariance", covariance);
 
-	// 		return covariance;
-	// 	}
-	// }
+				return covariance;
+			}
+		} else {
+			Map response = new HashMap<String, String>();
+			response.put("Cálculo inválido", "Nao pode ser calculado, pois há apenas um dado quantitativo");
+			return response;
+		}
+	}
+
+	public static Map pearsonCoefficientCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+		String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+		if (quantitatives.length >= 2) {
+			Map pearsonCoefficient = null;
+			pearsonCoefficient = (Map) selectedSession.get("pearsonCoefficient");
+			if (pearsonCoefficient != null) {
+				return pearsonCoefficient;
+			} else {
+				pearsonCoefficient = new HashMap<String, Map>();
+	
+				for (String title : quantitatives) {
+					for (String title2 : quantitatives) {
+						if (!title.equals(title2)) {
+							String[] column = selectColumn(title, selectedSession);
+							List<Double> columnData = convertColumnToDouble(column);
+							String[] column2 = selectColumn(title2, selectedSession);
+							List<Double> columnData2 = convertColumnToDouble(column);
+			
+							PearsonCoefficient pearsonCoefficientCalc = new PearsonCoefficient(columnData, columnData2);
+			
+							pearsonCoefficient.put(title + ", " + title2, pearsonCoefficientCalc.calculate());
+						}
+					}
+				}
+	
+				Session.updateSession(token, "pearsonCoefficient", pearsonCoefficient);
+	
+				return pearsonCoefficient;
+			}
+		} else {
+			Map response = new HashMap<String, String>();
+			response.put("Cálculo inválido", "Nao pode ser calculado, pois há apenas um dado quantitativo");
+			return response;
+		}
+	}
+
+	public static Map<String, Double> skewnessCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map skewness = null;
+		skewness = (Map) selectedSession.get("skewness");
+		if (skewness != null) {
+			return skewness;
+		} else {
+			skewness = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				Skewness skewnessCalc = new Skewness(columnData);
+
+				skewness.put(title, skewnessCalc.calculate());
+			}
+
+			Session.updateSession(token, "skewness", skewness);
+
+			return skewness;
+		}
+	}
+
+	public static Map<String, Double> standardDeviationCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map standardDeviation = null;
+		standardDeviation = (Map) selectedSession.get("standardDeviation");
+		if (standardDeviation != null) {
+			return standardDeviation;
+		} else {
+			standardDeviation = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				StandardDeviation standardDeviationCalc = new StandardDeviation(columnData);
+
+				standardDeviation.put(title, standardDeviationCalc.calculate());
+			}
+
+			Session.updateSession(token, "standardDeviation", standardDeviation);
+
+			return standardDeviation;
+		}
+	}
+
+	public static Map<String, Double> sumOfPowersCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map sumOfPowers = null;
+		sumOfPowers = (Map) selectedSession.get("sumOfPowers");
+		if (sumOfPowers != null) {
+			return sumOfPowers;
+		} else {
+			sumOfPowers = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				SumOfPowers sumOfPowersCalc = new SumOfPowers(columnData);
+
+				sumOfPowers.put(title, sumOfPowersCalc.calculate());
+			}
+
+			Session.updateSession(token, "sumOfPowers", sumOfPowers);
+
+			return sumOfPowers;
+		}
+	}
+
+	public static Map<String, Double> varianceCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map variance = null;
+		variance = (Map) selectedSession.get("variance");
+		if (variance != null) {
+			return variance;
+		} else {
+			variance = new HashMap<String, Map>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				Variance varianceCalc = new Variance(columnData);
+
+				variance.put(title, varianceCalc.calculate());
+			}
+
+			Session.updateSession(token, "variance", variance);
+
+			return variance;
+		}
+	}
 
 	public static Map contingencyTableCalculate(String token) {
 		Map selectedSession = Session.getSession(token);
@@ -229,7 +389,7 @@ public class CSVController {
 		}
 	}
 
-	public static Map quanlitativeFrequencyTableCalculate(String token) {
+	public static Map qualitativeFrequencyTableCalculate(String token) {
 		Map selectedSession = Session.getSession(token);
 
 		Map frequencyTable = null;
@@ -240,13 +400,13 @@ public class CSVController {
 			frequencyTable = new HashMap<String, List>();
 			String[] header = (String[]) selectedSession.get("header");
 			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
-			String[] quanlitatives = (String[]) selectedSession.get("quanlitatives");
+			String[] qualitatives = (String[]) selectedSession.get("qualitatives");
 
-			for (String title : quanlitatives) {
+			for (String title : qualitatives) {
 				String[] column = selectColumn(title, selectedSession);
 				List<String> columnData = Arrays.asList(column);
 
-				FrequencyTable frequencyTableCalc = new FrequencyTable(quanlitatives, records);
+				FrequencyTable frequencyTableCalc = new FrequencyTable(qualitatives, records);
 
 				frequencyTable.put(title, frequencyTableCalc.calculate());
 			}
