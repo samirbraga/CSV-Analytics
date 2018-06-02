@@ -15,7 +15,6 @@ import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
 import br.com.csvanalytics.metrics.ArithmeticOperations.PearsonCoefficient;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Skewness;
 import br.com.csvanalytics.metrics.ArithmeticOperations.StandardDeviation;
-import br.com.csvanalytics.metrics.ArithmeticOperations.SumOfPowers;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Variance;
 import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
@@ -278,32 +277,6 @@ public class CSVController {
 			Session.updateSession(token, "standardDeviation", standardDeviation);
 
 			return standardDeviation;
-		}
-	}
-
-	public static Map<String, Double> sumOfPowersCalculate(String token) {
-		Map selectedSession = Session.getSession(token);
-
-		Map sumOfPowers = null;
-		sumOfPowers = (Map) selectedSession.get("sumOfPowers");
-		if (sumOfPowers != null) {
-			return sumOfPowers;
-		} else {
-			sumOfPowers = new HashMap<String, Map>();
-			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
-
-			for (String title : quantitatives) {
-				String[] column = selectColumn(title, selectedSession);
-				List<Double> columnData = convertColumnToDouble(column);
-
-				SumOfPowers sumOfPowersCalc = new SumOfPowers(columnData);
-
-				sumOfPowers.put(title, sumOfPowersCalc.calculate());
-			}
-
-			Session.updateSession(token, "sumOfPowers", sumOfPowers);
-
-			return sumOfPowers;
 		}
 	}
 
