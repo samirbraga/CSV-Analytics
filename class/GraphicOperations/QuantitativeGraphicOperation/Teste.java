@@ -29,7 +29,7 @@ class Teste{
 		row.put("gastos","90");
 		csv.add(row);
 
-		FrequencyTable e = new FrequencyTable(header,csv);
+		FrequencyTableQuantitative e = new FrequencyTableQuantitative(header,csv);
 		List<String[]> tabela = (List<String[]>) e. calculate();
 		for(String[] vetor : tabela){
 			for(String str : vetor){
