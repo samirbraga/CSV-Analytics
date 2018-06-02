@@ -1,25 +1,25 @@
 import java.util.*;
 class Teste{
 	public static void main(String[] args) {
-		String[] header = {"salario","n_filhos","gastos"};
+		String[] header = {"salario"};
 		List<Map> csv = new ArrayList<Map>();
 		Map<String,String> row = new HashMap<String,String>();
-		row.put("salario","1000");
+		row.put("salario","2001");
 		row.put("n_filhos","2");
 		row.put("gastos","1500");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","2000");
+		row.put("salario","200");
 		row.put("n_filhos","1");
 		row.put("gastos","500");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","2000");
+		row.put("salario","2002");
 		row.put("n_filhos","2");
 		row.put("gastos","500");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","6000");
+		row.put("salario","5001");
 		row.put("n_filhos","5");
 		row.put("gastos","4500");
 		csv.add(row);
