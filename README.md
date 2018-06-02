@@ -3,8 +3,8 @@
 Este repositório contém o trabalho final da disciplina Técnicas de Programação, cursada pelo bacharelado em Ciência da Computação da Universidade Federal do Ceará no semestre 2018.1. A disciplina aborda as técnicas de programação orientada a objetos.
 
 ## Equipe
- - Breno Araújo de Lima
- - Francisco San Diego de Sousa Castilho
+ - Breno Araújo de Lima [@brenoaraujolima](https://github.com/brenoaraujolima)
+ - Francisco San Diego de Sousa Castilho [@SanDiegoCastilho](https://github.com/SanDiegoCastilho)
  - Lucas Tavares de Oliveira [@ltdeoliveira](https://github.com/ltdeoliveira)
  - Matheus Sousa Correia [@Lukiam23](https://github.com/Lukiam23)
  - Samir Braga Chaves [@samirbraga](https://github.com/samirbraga)
