@@ -11,10 +11,9 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/calc")
-public class CSVFrequencyTableEndpoint {
-    @RequestMapping(method = RequestMethod.GET, path = "/frequency-table")
+public class CSVQualitativeFrequencyTableEndpoint {
+    @RequestMapping(method = RequestMethod.GET, path = "/frequency-table-1")
     public Map<String, Double> queryMethod(@RequestParam String token) {
-        System.out.println("token=" + token);
         if (Session.checkExistence(token)){
             Map<String, Double> myMap = new HashMap<String, Double>();
             myMap.put(token, 9.0);

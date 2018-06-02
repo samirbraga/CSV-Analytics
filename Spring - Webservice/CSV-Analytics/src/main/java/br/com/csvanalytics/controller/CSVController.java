@@ -12,6 +12,8 @@ import br.com.csvanalytics.metrics.ArithmeticOperations.Mean;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Median;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
 import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.QuantitativeFrequencyTable;
 import br.com.csvanalytics.model.Session;
 
 public class CSVController {
@@ -196,6 +198,62 @@ public class CSVController {
 			Session.updateSession(token, "contingencyTable", contingencyTable);
 
 			return contingencyTable;
+		}
+	}
+
+	public static Map quantitativeFrequencyTableCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map frequencyTable = null;
+		frequencyTable = (Map) selectedSession.get("quantitativeFrequencyTable");
+		if (frequencyTable != null) {
+			return frequencyTable;
+		} else {
+			frequencyTable = new HashMap<String, List>();
+			String[] header = (String[]) selectedSession.get("header");
+			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<String> columnData = Arrays.asList(column);
+
+				QuantitativeFrequencyTable frequencyTableCalc = new QuantitativeFrequencyTable(quantitatives, records);
+
+				frequencyTable.put(title, frequencyTableCalc.calculate());
+			}
+
+			Session.updateSession(token, "quantitativeFrequencyTable", frequencyTable);
+
+			return frequencyTable;
+		}
+	}
+
+	public static Map quanlitativeFrequencyTableCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map frequencyTable = null;
+		frequencyTable = (Map) selectedSession.get("quanlitativeFrequencyTable");
+		if (frequencyTable != null) {
+			return frequencyTable;
+		} else {
+			frequencyTable = new HashMap<String, List>();
+			String[] header = (String[]) selectedSession.get("header");
+			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
+			String[] quanlitatives = (String[]) selectedSession.get("quanlitatives");
+
+			for (String title : quanlitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<String> columnData = Arrays.asList(column);
+
+				FrequencyTable frequencyTableCalc = new FrequencyTable(quanlitatives, records);
+
+				frequencyTable.put(title, frequencyTableCalc.calculate());
+			}
+
+			Session.updateSession(token, "quanlitativeFrequencyTable", frequencyTable);
+
+			return frequencyTable;
 		}
 	}
 

@@ -1,32 +1,34 @@
-package br.com.csvanalytics.metrics.GraphicOperations;
+package br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation;
 
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.lang.Math;
+import java.text.DecimalFormat;
 
-public class FrequencyTable extends QualitativeGraphicOperation {
-
-    public FrequencyTable(String[] labels, List<Map> data){
-        super(labels, data);
+public class QuantitativeFrequencyTable extends QuantitativeGraphicOperation {
+    public QuantitativeFrequencyTable(String[] labels, List<Map> data) {
+        super(labels,data);
     }
 
     @Override
-    public List<String[]> calculate() {
-        //A tabela de frequência de dados qualitativos é composta por 3 colunas: coluna das categorias ou classes – onde se indicam as categorias observadas para a variável em estudo; coluna das frequências absolutas – onde se regista o total de elementos da amostra que pertencem a cada categoria e coluna das frequências relativas – onde se coloca, para cada categoria, a sua frequência relativa.
-        Map<String,Map> frequencyTable = new HashMap<String,Map>();
-        double totalF = 0; //Somatória das frequências absolutas
-        double totalf = 0; //Somatória das frequências relativas
+    public Object calculate() {
         String[] header = (String[]) this.getLabels(); //Cabeçalho do csv
         List<Map> csv = this.getData(); //Dados do csv
 
-        //Nesse laço eu percorro linha por linha de csv.
+        Map<String,Map> frequencyTable = new HashMap<String,Map>();
+        double totalF = 0;
+        double totalf = 0;
+
+        //Nesse for se percorre linha por linha da matriz e coloca em frequencyTable a classe e a frequência absoluta dela.
         for (Iterator matriz = csv.listIterator(); matriz.hasNext();) {
-            Map linha = (Map) matriz.next(); //Pego uma linha
-            for (String label: header) { //Faço uma verificação com todos os cabeçalhos
-                String key = (String)linha.get(label);
-                if (!frequencyTable.containsKey( label )) {
+            Map linha = (Map) matriz.next(); 
+
+            for (String label: header) {
+                String key = (String) linha.get(label);
+                if (!frequencyTable.containsKey(label)) {
                     Map<String,Integer> valores = new HashMap<String,Integer>();
                     valores.put(key,1);
                     frequencyTable.put(label,valores);
@@ -47,11 +49,18 @@ public class FrequencyTable extends QualitativeGraphicOperation {
             }
 
         }
+        
+        DecimalFormat df = new DecimalFormat("0.0000"); //Essa classe é usada para se delimitar o número de casas decimais 
+        int acumulador = 0;//Serve para contar a frequência absoluta acumulada
+       
+        /*A frequencyTableFinal é um ArrayList onde cada elemento é um vetor de Strings onde o 
+        primeiro elemento é a classe, o segundo a frequência absoluta, 
+        o terceiro a frequência relativa, o quarto a 
+        frequência absoluta acumulada e o quinto a frequência relativa acumulada.*/
 
         List<String[]> frequencyTableFinal = new ArrayList<String[]>();
         Iterator keys = frequencyTable.keySet().iterator();
         int i = 0;
-
         while (keys.hasNext()) {
             String quantifier = (String) keys.next();
             Iterator it = frequencyTable.get(quantifier).entrySet().iterator();
@@ -60,7 +69,8 @@ public class FrequencyTable extends QualitativeGraphicOperation {
                 Map.Entry pair = (Map.Entry)it.next();
                 double registerCalc = (Integer)pair.getValue()/totalF;
                 totalf += registerCalc;
-                String[] str = {String.valueOf(pair.getKey()),String.valueOf(pair.getValue()),String.valueOf(registerCalc)};
+                acumulador += (Integer) pair.getValue();
+                String[] str = {String.valueOf(pair.getKey()),String.valueOf(df.format(pair.getValue())),String.valueOf(df.format(registerCalc)),String.valueOf(acumulador),String.valueOf(df.format(totalf))};
                 frequencyTableFinal.add(str);
                 it.remove();
             }
@@ -68,9 +78,8 @@ public class FrequencyTable extends QualitativeGraphicOperation {
             keys.remove();
         }
 
-        String[] str = { "Total", String.valueOf(totalF), String.valueOf(totalf) };
+        String[] str = {"Total",String.valueOf(totalF),String.valueOf(Math.round(totalf)),"",""};
         frequencyTableFinal.add(str);
-
         return frequencyTableFinal;
     }
 }
