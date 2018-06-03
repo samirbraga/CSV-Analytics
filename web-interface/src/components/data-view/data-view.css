@@ -1,5 +1,6 @@
 .data-view {
     height: 100%;
+    min-height: 400px;
     width: 100%;
     background: url('/CSV-Analytics/imgs/table-plot-bg.png') no-repeat right bottom;
     background-size: 55% auto;

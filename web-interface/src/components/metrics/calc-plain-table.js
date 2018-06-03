@@ -27,7 +27,11 @@ class CalcPlainTable extends Component {
                                     dataKeys.map((field, i) => (
                                         <tr>
                                             <th>{field.toString()}</th>
-                                            <td>{data[field]}</td>
+                                            <td>{
+                                                Array.isArray(data[field]) ? 
+                                                data[field].join(', ') :
+                                                data[field]
+                                            }</td>
                                         </tr>
                                     ))
                                 }

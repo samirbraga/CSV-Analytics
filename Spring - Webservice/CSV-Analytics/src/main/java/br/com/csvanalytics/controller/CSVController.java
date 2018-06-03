@@ -9,6 +9,7 @@ import java.util.Map;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Covariance;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Kurtosis;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Max;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Mode;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Mean;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Median;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
@@ -149,6 +150,43 @@ public class CSVController {
 			Session.updateSession(token, "kurtosis", kurtosis);
 
 			return kurtosis;
+		}
+	}
+
+	public static Map<String, Double> modeCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map mode = null;
+		mode = (Map) selectedSession.get("mode");
+		if (mode != null) {
+			return mode;
+		} else {
+			mode = new HashMap<String, List>();
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<Double> columnData = convertColumnToDouble(column);
+
+				Mode modeCalc = new Mode<Double>(columnData);
+
+				mode.put(title, modeCalc.calculate());
+			}
+
+			String[] qualitatives = (String[]) selectedSession.get("qualitatives");
+
+			for (String title : qualitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<String> columnData = Arrays.asList(column);
+
+				Mode modeCalc = new Mode<String>(columnData);
+
+				mode.put(title, modeCalc.calculate());
+			}
+
+			Session.updateSession(token, "mode", mode);
+
+			return mode;
 		}
 	}
 

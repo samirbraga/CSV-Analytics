@@ -9,7 +9,7 @@ import java.util.HashSet;
 public class ContingencyTable extends QualitativeGraphicOperation {
 
 	public ContingencyTable(String[] labels, List<Map> data) {
-		super(labels,data);
+		super(labels, data);
 	}
 	
 	@Override

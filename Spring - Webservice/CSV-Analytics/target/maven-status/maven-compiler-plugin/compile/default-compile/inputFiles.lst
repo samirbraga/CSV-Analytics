@@ -1,5 +1,6 @@
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVVarianceEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Min.java
+/mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Mode.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVBoxplotEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVMedianEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVReaderEndpoint.java
@@ -18,6 +19,7 @@
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVMinEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Max.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Kurtosis.java
+/mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QuantitativeGraphicOperation/Scatterplot.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/model/CSVReader.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/SumOfPowers.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVModeEndpoint.java

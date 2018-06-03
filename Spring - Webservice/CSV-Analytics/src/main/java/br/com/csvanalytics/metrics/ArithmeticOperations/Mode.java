@@ -1,3 +1,5 @@
+package br.com.csvanalytics.metrics.ArithmeticOperations;
+
 import java.util.*;
 
 public class Mode<T> {
