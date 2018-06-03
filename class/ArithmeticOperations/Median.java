@@ -39,7 +39,7 @@ public class Median extends ArithmeticOperation {
         if(n%2 == 0)
           median = ((this.getList()).get(n/2) + (this.getList()).get(n/2 - 1))/2;
         else
-          median = (this.getList()).get((Integer) n/2 + 1);
+          median = (this.getList()).get((Integer) n/2);
 
         return median;
     }
