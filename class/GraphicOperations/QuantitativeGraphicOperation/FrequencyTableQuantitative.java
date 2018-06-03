@@ -1,10 +1,14 @@
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.TreeMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Math;
 import java.text.DecimalFormat;
+import java.util.Collections;
 
 class FrequencyTableQuantitative extends QuantitativeGraphicOperation{
 
@@ -18,7 +22,7 @@ class FrequencyTableQuantitative extends QuantitativeGraphicOperation{
         String[] header = (String[]) this.getLabels(); //Cabeçalho do csv
         List<Map> csv = this.getData(); //Dados do csv
 
-        Map<String,Map> frequencyTable = new HashMap<String,Map>();
+        Map<String,Map> frequencyTable = new TreeMap<String,Map>();
         double totalF = 0;
         double totalf = 0;
 
@@ -28,7 +32,7 @@ class FrequencyTableQuantitative extends QuantitativeGraphicOperation{
             for(String label: header){
                 String key = (String) linha.get(label);
                 if(!frequencyTable.containsKey( label )){
-                    Map<String,Integer> valores = new HashMap<String,Integer>();
+                    Map<String,Integer> valores = new TreeMap<String,Integer>();
                     valores.put(key,1);
                     frequencyTable.put(label,valores);
                     totalF += 1;
@@ -51,6 +55,7 @@ class FrequencyTableQuantitative extends QuantitativeGraphicOperation{
 
         }
         
+
         DecimalFormat df = new DecimalFormat("0.0000"); //Essa classe é usada para se delimitar o número de casas decimais 
         int acumulador = 0;//Serve para contar a frequência absoluta acumulada
        
@@ -76,6 +81,7 @@ class FrequencyTableQuantitative extends QuantitativeGraphicOperation{
             }
             keys.remove();
         }
+       
         String[] str = {"Total",String.valueOf(totalF),String.valueOf(Math.round(totalf)),"",""};
         frequencyTableFinal.add(str);
         return frequencyTableFinal;
