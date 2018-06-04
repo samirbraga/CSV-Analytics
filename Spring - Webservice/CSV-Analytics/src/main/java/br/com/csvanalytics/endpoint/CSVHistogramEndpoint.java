@@ -17,7 +17,7 @@ public class CSVHistogramEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/histogram")
     public Map<String, List> queryMethod(@RequestParam String token) {
         if (Session.checkExistence(token)) {
-            Map<String, List> histogram = CSVController.quantitativeFrequencyTableCalculate(token);
+            Map<String, List> histogram = CSVController.histogramCalculate(token);
             return histogram;
         }
 

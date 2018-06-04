@@ -19,6 +19,7 @@ import br.com.csvanalytics.metrics.ArithmeticOperations.StandardDeviation;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Variance;
 import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Histogram;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.QuantitativeFrequencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Scatterplot;
 import br.com.csvanalytics.model.Session;
@@ -454,6 +455,34 @@ public class CSVController {
 			Session.updateSession(token, "scatterPlot", scatterPlot);
 
 			return scatterPlot;
+		}
+	}
+
+	public static Map histogramCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map histogram = null;
+		histogram = (Map) selectedSession.get("histogram");
+		if (histogram != null) {
+			return histogram;
+		} else {
+			histogram = new HashMap<String, List>();
+			String[] header = (String[]) selectedSession.get("header");
+			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+
+			for (String title : quantitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<String> columnData = Arrays.asList(column);
+
+				Histogram histogramCalc = new histogram(quantitatives, records);
+
+				histogram.put(title, histogramCalc.calculate());
+			}
+
+			Session.updateSession(token, "histogram", histogram);
+
+			return histogram;
 		}
 	}
 
