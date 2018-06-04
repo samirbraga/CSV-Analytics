@@ -41,7 +41,7 @@ class CalcHistogram extends Component {
                     options={{
                         bars: 'horizontal'
                     }}
-                    graph_id="ScatterChart"
+                    graph_id={table + Math.floor(Math.random() * 100)}
                     width="100%"
                     height="400px"
                     legend_toggle

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Scatterplot extends QuantitativeGraphicOperation {
 
-    public Scatterplot(String[] labels, List<Map> data){
+    public Scatterplot(String[] labels, List<Map> data) {
 		super(labels, data);
     }
     
@@ -16,16 +16,17 @@ public class Scatterplot extends QuantitativeGraphicOperation {
         String[] header = (String[]) this.getLabels();
         List<Map> csv = this.getData();
 
-        List<Map> scatterplot = new ArrayList<Map>();
+        List<String[]> scatterplot = new ArrayList<String[]>();
 
         for (Map line : csv) {
-            Map<String, Double> newLine = new HashMap<String, Double>();
-
-            for (String column : header) {
-                newLine.put(column, (Double) line.get(column));
+            if (!header[0].equals(header[1])) {
+                String[] newLine = new String[2];
+    
+                newLine[0] = (String)line.get(header[0]);
+                newLine[1] = (String)line.get(header[1]);
+    
+                scatterplot.add(newLine);
             }
-
-            scatterplot.add(newLine);
         }
 
         return scatterplot;

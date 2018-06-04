@@ -12,6 +12,7 @@ import CalcQuantitativeFrequencyTable from './calc-quantitative-frequency-table'
 import CalcQualitativeFrequencyTable from './calc-qualitative-frequency-table';
 import CalcHistogram from './calc-histogram';
 import CalcGraphicBar from './calc-graphic-bar';
+import CalcScatterplot from './calc-scatter-plot';
 
 
 class CalcOption extends Component {
@@ -161,6 +162,19 @@ class CalcOption extends Component {
                             let data = this.state.data[table];
                             return (
                                 <CalcHistogram id={table} className={'pt-4 mb-3'} data={data} table={table} />
+                            );
+                        })}
+                    </div>
+                );
+            } else if (this.state.calc.key === 'scatterplot') {
+                calc = (
+                    <div>
+                        <FieldsNav data={this.state.data} />
+
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+                            return (
+                                <CalcScatterplot id={table} className={'pt-4 mb-3'} data={data} table={table} />
                             );
                         })}
                     </div>

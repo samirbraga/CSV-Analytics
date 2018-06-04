@@ -9,10 +9,10 @@ import java.util.Map;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Covariance;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Kurtosis;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Max;
-import br.com.csvanalytics.metrics.ArithmeticOperations.Mode;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Mean;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Median;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Min;
+import br.com.csvanalytics.metrics.ArithmeticOperations.Mode;
 import br.com.csvanalytics.metrics.ArithmeticOperations.PearsonCoefficient;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Skewness;
 import br.com.csvanalytics.metrics.ArithmeticOperations.StandardDeviation;
@@ -20,6 +20,7 @@ import br.com.csvanalytics.metrics.ArithmeticOperations.Variance;
 import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.QuantitativeFrequencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Scatterplot;
 import br.com.csvanalytics.model.Session;
 
 public class CSVController {
@@ -204,7 +205,7 @@ public class CSVController {
 
 				for (String title : quantitatives) {
 					for (String title2 : quantitatives) {
-						if (!title.equals(title2)) {
+						if (!title.equals(title2) && covariance.get(title + ", " + title2) == null && covariance.get(title2 + ", " + title) == null) {
 							String[] column = selectColumn(title, selectedSession);
 							List<Double> columnData = convertColumnToDouble(column);
 							String[] column2 = selectColumn(title2, selectedSession);
@@ -242,7 +243,7 @@ public class CSVController {
 	
 				for (String title : quantitatives) {
 					for (String title2 : quantitatives) {
-						if (!title.equals(title2)) {
+						if (!title.equals(title2) && pearsonCoefficient.get(title + ", " + title2) == null && pearsonCoefficient.get(title2 + ", " + title) == null) {
 							String[] column = selectColumn(title, selectedSession);
 							List<Double> columnData = convertColumnToDouble(column);
 							String[] column2 = selectColumn(title2, selectedSession);
@@ -425,6 +426,34 @@ public class CSVController {
 			Session.updateSession(token, "quanlitativeFrequencyTable", frequencyTable);
 
 			return frequencyTable;
+		}
+	}
+
+	public static Map scatterPlotCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map scatterPlot = null;
+		scatterPlot = (Map) selectedSession.get("scatterPlot");
+		if (scatterPlot != null) {
+			return scatterPlot;
+		} else {
+			scatterPlot = new HashMap<String, List>();
+			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
+			
+			for (String title : quantitatives) {
+				for (String title2 : quantitatives) {
+					if (!title.equals(title2) && scatterPlot.get(quantitatives[0] + ", " + quantitatives[1]) == null && scatterPlot.get(quantitatives[1] + ", " + quantitatives[0]) == null) {
+						String[] columns = { title, title2 };
+						Scatterplot scatterPlotCalc = new Scatterplot(columns, records);
+						scatterPlot.put(title + ", " + title2, scatterPlotCalc.calculate());
+					}
+				}
+			}
+
+			Session.updateSession(token, "scatterPlot", scatterPlot);
+
+			return scatterPlot;
 		}
 	}
 
