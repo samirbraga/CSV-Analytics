@@ -30,32 +30,46 @@ class CalcContingencyTable   extends Component {
 
         return (
             <span {...this.props} className={'d-block ' + this.props.className}>
-                <h3>{table}</h3>
-                <hr/>
-                <Table className="table calc-plain-table">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2">{table}</th>
-                            {Object.keys(data).map((key) => <th colSpan={Object.keys(data[key]).length} key={key}>{key}</th>)}
-                        </tr>
-                        <tr>
-                            {subcat.map(key => <th>{key}</th>)}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {Object.keys(distinct).map(key => (
-                            <tr>
-                                <td>{key}</td>
-                                {allValues.map(value => (
-                                    <td>{value[key]}</td>
+                { 
+                    data.status == 'error' ?
+                    <div>{
+                        Object.keys(data).map(key => (
+                            <span>
+                                <h4>{key}</h4>
+                                <p>{data[key]}</p>
+                                <br />
+                            </span>
+                        ))
+                    }</div> :
+                    <span>
+                        <h3>{table}</h3>
+                        <hr/>
+                        <Table className="table calc-plain-table">
+                            <thead>
+                                <tr>
+                                    <th rowSpan="2">{table}</th>
+                                    {Object.keys(data).map((key) => <th colSpan={Object.keys(data[key]).length} key={key}>{key}</th>)}
+                                </tr>
+                                <tr>
+                                    {subcat.map(key => <th>{key}</th>)}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Object.keys(distinct).map(key => (
+                                    <tr>
+                                        <td>{key}</td>
+                                        {allValues.map(value => (
+                                            <td>{value[key]}</td>
+                                        ))}
+                                    </tr>
                                 ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                            </tbody>
+                        </Table>
+                    </span>
+                }
             </span>
         );
     }
 }
 
-export default CalcContingencyTable ;
+export default CalcContingencyTable;

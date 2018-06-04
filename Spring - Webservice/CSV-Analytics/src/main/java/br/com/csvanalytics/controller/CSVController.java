@@ -354,20 +354,26 @@ public class CSVController {
 			return contingencyTable;
 		} else {
 			contingencyTable = new HashMap<String, Map>();
-			String[] header = (String[]) selectedSession.get("header");
-			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
 			String[] qualitatives = (String[]) selectedSession.get("qualitatives");
 
-			for (String title : qualitatives) {
-				String[] column = selectColumn(title, selectedSession);
-				List<String> columnData = Arrays.asList(column);
+			if (qualitatives.length > 1) {
+				String[] header = (String[]) selectedSession.get("header");
+				List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
 
-				ContingencyTable contingencyTableCalc = new ContingencyTable(qualitatives, records, title);
+				for (String title : qualitatives) {
+					String[] column = selectColumn(title, selectedSession);
+					List<String> columnData = Arrays.asList(column);
 
-				contingencyTable.put(title, contingencyTableCalc.calculate());
+					ContingencyTable contingencyTableCalc = new ContingencyTable(qualitatives, records, title);
+
+					contingencyTable.put(title, contingencyTableCalc.calculate());
+				}
+
+				Session.updateSession(token, "contingencyTable", contingencyTable);
+			} else {
+				contingencyTable.put("status", "error");
+				contingencyTable.put("Cálculo inválido", "Não pode ser calculado, pois há apenas um dado qualitativo");
 			}
-
-			Session.updateSession(token, "contingencyTable", contingencyTable);
 
 			return contingencyTable;
 		}
@@ -390,7 +396,7 @@ public class CSVController {
 				String[] column = selectColumn(title, selectedSession);
 				List<String> columnData = Arrays.asList(column);
 
-				QuantitativeFrequencyTable frequencyTableCalc = new QuantitativeFrequencyTable(quantitatives, records);
+				QuantitativeFrequencyTable frequencyTableCalc = new QuantitativeFrequencyTable(new String[]{title}, records);
 
 				frequencyTable.put(title, frequencyTableCalc.calculate());
 			}
@@ -418,7 +424,7 @@ public class CSVController {
 				String[] column = selectColumn(title, selectedSession);
 				List<String> columnData = Arrays.asList(column);
 
-				FrequencyTable frequencyTableCalc = new FrequencyTable(qualitatives, records);
+				FrequencyTable frequencyTableCalc = new FrequencyTable(new String[]{title}, records);
 
 				frequencyTable.put(title, frequencyTableCalc.calculate());
 			}

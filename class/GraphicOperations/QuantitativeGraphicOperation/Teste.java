@@ -1,32 +1,32 @@
 import java.util.*;
 class Teste{
 	public static void main(String[] args) {
-		String[] header = {"salario"};
+		String[] header = {"nome"};
 		List<Map> csv = new ArrayList<Map>();
 		Map<String,String> row = new HashMap<String,String>();
-		row.put("salario","2001");
-		row.put("n_filhos","2");
-		row.put("gastos","1500");
+		row.put("nome","Matheus");
+		row.put("nacionalidade","2");
+		row.put("sexo","M");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","200");
-		row.put("n_filhos","1");
-		row.put("gastos","500");
+		row.put("nome","Natan");
+		row.put("nacionalidade","1");
+		row.put("sexo","M");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","2002");
-		row.put("n_filhos","2");
-		row.put("gastos","500");
+		row.put("nome","Ana");
+		row.put("nacionalidade","2");
+		row.put("sexo","F");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","5001");
-		row.put("n_filhos","5");
-		row.put("gastos","4500");
+		row.put("nome","Joyce");
+		row.put("nacionalidade","5");
+		row.put("sexo","F");
 		csv.add(row);
 		row = new HashMap<String,String>();
-		row.put("salario","6000");
-		row.put("n_filhos","0");
-		row.put("gastos","90");
+		row.put("nome","Mirna");
+		row.put("nacionalidade","0");
+		row.put("sexo","F");
 		csv.add(row);
 
 		FrequencyTableQuantitative e = new FrequencyTableQuantitative(header,csv);

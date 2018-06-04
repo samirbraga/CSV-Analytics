@@ -38,7 +38,7 @@ class InfiniteScrollTable extends Component {
         let footer = [];
 
         if (this.props.hasFooter) {
-            records = this.props.records.slice(0, this.props.records.length-2);
+            records = this.props.records.slice(0, this.props.records.length-1);
             footer = this.props.records[this.props.records.length-1];
         } else {
             records = this.props.records;

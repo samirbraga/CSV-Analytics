@@ -8,8 +8,7 @@ public class CSVReader {
     List<String> header = new ArrayList<String>();
     List<String[]> records = new ArrayList<String[]>();
 
-
-    public CSVReader(BufferedReader file){
+    public CSVReader(BufferedReader file) {
         mainFile = file;
     }
 
@@ -26,13 +25,58 @@ public class CSVReader {
             for (String heading : headings) {
                 header.add(heading);
             }
+
             String line = null;
             while ((line = mainFile.readLine()) != null) {
-                records.add(line.split(","));
+                String[] cells = line.split(",");
+
+                boolean hasNull = false;
+                for (int i = 0; i < cells.length; i++) {
+                    cells[i] = trim(cells[i], '"');
+                    cells[i] = trim(cells[i], ' ');
+
+                    if (cells[i] == "") {
+                        hasNull = false;
+                    }
+                }
+
+                if (cells.length == headings.length && !hasNull) {
+                    records.add(cells);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String trim(String str, char a) {
+        String[] chars = str.split("");
+        List<String> charsList = new ArrayList<String>();
+
+        for (String c : chars) {
+            charsList.add(c);
+        }
+
+        for (int i = 0; isSame(charsList.get(i), a); i++) {
+            charsList.remove(i);
+            i--;
+        }
+
+        for (int i = charsList.size() - 1; isSame(charsList.get(i), a); i--) {
+            charsList.remove(i);
+        }
+
+        chars = new String[charsList.size()];
+        chars = charsList.toArray(chars);
+
+        return String.join("", chars);
+    }
+ 
+    public boolean isSame(String s, char c) {
+        if (s != null && s.length() == 1) { 
+            return s.charAt(0) == c;
+        }
+        return false;
     }
 
     public String[] getHeader() {

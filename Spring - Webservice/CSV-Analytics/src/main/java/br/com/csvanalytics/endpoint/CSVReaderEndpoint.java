@@ -38,16 +38,15 @@ public class CSVReaderEndpoint {
 
         String[][] records = CSV.getRecords();
         int recordsLen = records.length;
-        Map[] docs = new HashMap[recordsLen];
+        List<Map> docs = new ArrayList<Map>();
         for (int i = 0; i < recordsLen; i++) {
             Map row = new HashMap<String, String>();
             for (int j = 0; j < header.length; j++) {
                 row.put(header[j], records[i][j]);
             }
-            docs[i] = row;
+            docs.add(row);
         }
 
-        data.put("records", docs);
         String[] tokens = {""};
         tokens[0] = new RandomString().nextString();
         data.put("token", tokens);
@@ -62,7 +61,25 @@ public class CSVReaderEndpoint {
             } catch (Exception e) {
                 qualitatives.add(header[i]);
             }
+
+            // if (quantitatives.contains(header[i])) {
+            //     int n = 0;
+            //     for (int j = 0; j < records.length; j++) {
+            //         try {
+            //             Double aux = Double.parseDouble(records[j][i]);
+            //             docs.remove(i - n);
+            //             n++;
+            //         } catch (Exception e) {
+            //             // 
+            //         }
+            //     }
+            // }
         }
+
+        Map[] docsArr = new Map[docs.size()];
+        docsArr = docs.toArray(docsArr);
+
+        data.put("records", docsArr);
 
         String[] qualitArr = new String[qualitatives.size()];
         qualitArr = qualitatives.toArray(qualitArr);

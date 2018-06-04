@@ -4,7 +4,6 @@ import CalcPlainTable from './calc-plain-table';
 
 import store from '../../store';
 
-import './calc-style.css';
 import LoadingOverlay from '../util/loading-overlay';
 import CalcContingencyTable from './calc-contingency-table';
 import FieldsNav from './fields-nav';
@@ -14,6 +13,7 @@ import CalcHistogram from './calc-histogram';
 import CalcGraphicBar from './calc-graphic-bar';
 import CalcScatterplot from './calc-scatter-plot';
 
+import './calc-style.css';
 
 class CalcOption extends Component {
     constructor(props) {
@@ -105,13 +105,37 @@ class CalcOption extends Component {
             if (this.state.calc.key === 'contingency-table') {
                 calc = (
                     <div>
-                        <FieldsNav data={this.state.data} />
+                        {
+                            this.state.data.status == 'error' ?
+                            <div>{
+                                <Table className="calc-plain-table my-2" >
+                                    <tbody>
+                                        {
+                                            Object.keys(this.state.data).map((field, i) => (
+                                                <tr>
+                                                    <th>{field.toString()}</th>
+                                                    <td>{
+                                                        Array.isArray(this.state.data[field]) ? 
+                                                        this.state.data[field].join(', ') :
+                                                        this.state.data[field]
+                                                    }</td>
+                                                </tr>
+                                            ))
+                                        }
+                                        <tr></tr>
+                                    </tbody>
+                                </Table>
+                            }</div> :
+                            <span>
+                                <FieldsNav data={this.state.data} />
 
-                        {Object.keys(this.state.data).map((table) => {
-                            let data = this.state.data[table];
+                                {Object.keys(this.state.data).map((table) => {
+                                    let data = this.state.data[table];
 
-                            return <CalcContingencyTable id={table} className={'pt-4 mb-3'} data={data} table={table} />;  
-                        })}
+                                    return <CalcContingencyTable id={table} className={'pt-4 mb-3'} data={data} table={table} />;  
+                                })}
+                            </span>
+                        }
                     </div>
                 );
             } else if (this.state.calc.key === 'qualitative-frequency-table') {
