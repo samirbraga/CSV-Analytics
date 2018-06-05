@@ -8,6 +8,7 @@
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVQualitativeFrequencyTableEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QuantitativeGraphicOperation/Boxplot.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Mean.java
+/mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVDownloadEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QualitativeGraphicOperations/ContingencyTable.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/endpoint/CSVCovarianceEndpoint.java
 /mnt/c/Users/samir.DESKTOP-QOF6N6C/Documents/Atividades/tecnicas_programacao/trab-final/Spring - Webservice/CSV-Analytics/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Median.java

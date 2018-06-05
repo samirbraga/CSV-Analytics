@@ -18,7 +18,7 @@ public class StandardDeviation extends ArithmeticOperation {
 
         double variance = new Variance(list).calculate();
 
-        double standardDeviation = Math.sqrt(standard.calculate());
+        double standardDeviation = Math.sqrt(variance);
         return standardDeviation;
     }
 }
