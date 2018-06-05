@@ -22,6 +22,8 @@ import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Histogram;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.QuantitativeFrequencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Scatterplot;
+import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Boxplot;
+
 import br.com.csvanalytics.model.Session;
 
 public class CSVController {
@@ -433,6 +435,34 @@ public class CSVController {
 			Session.updateSession(token, "quanlitativeFrequencyTable", frequencyTable);
 
 			return frequencyTable;
+		}
+	}
+
+	public static Map boxPlotCalculate(String token) {
+		Map selectedSession = Session.getSession(token);
+
+		Map boxPlot = null;
+		boxPlot = (Map) selectedSession.get("boxplot");
+		if (boxPlot != null) {
+			return boxPlot;
+		} else {
+			boxPlot = new HashMap<String, List>();
+			String[] header = (String[]) selectedSession.get("header");
+			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
+			String[] qualitatives = (String[]) selectedSession.get("qualitatives");
+
+			for (String title : qualitatives) {
+				String[] column = selectColumn(title, selectedSession);
+				List<String> columnData = Arrays.asList(column);
+
+				Boxplot boxPlotCalc = new Boxplot(new String[]{title}, records);
+
+				boxPlot.put(title, boxPlotCalc.calculate());
+			}
+
+			Session.updateSession(token, "boxplot", boxPlot);
+
+			return boxPlot;
 		}
 	}
 

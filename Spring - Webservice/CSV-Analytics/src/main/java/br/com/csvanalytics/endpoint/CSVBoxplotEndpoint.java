@@ -1,5 +1,6 @@
 package br.com.csvanalytics.endpoint;
 
+import br.com.csvanalytics.controller.CSVController;
 import br.com.csvanalytics.model.Session;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,11 +15,9 @@ import java.util.Map;
 public class CSVBoxplotEndpoint {
     @RequestMapping(method = RequestMethod.GET, path = "/boxplot")
     public Map<String, Double> queryMethod(@RequestParam String token) {
-        System.out.println("token=" + token);
         if (Session.checkExistence(token)){
-            Map<String, Double> myMap = new HashMap<String, Double>();
-            myMap.put(token, 9.0);
-            return myMap;
+            Map<String, Double> boxplot = CSVController.boxPlotCalculate(token);
+            return boxplot;
         }
 
         return null;
