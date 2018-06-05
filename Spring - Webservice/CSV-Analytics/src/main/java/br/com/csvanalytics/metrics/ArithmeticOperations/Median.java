@@ -1,5 +1,7 @@
-import java.util.List;
+package br.com.csvanalytics.metrics.ArithmeticOperations;
+
 import java.util.Collections;
+import java.util.List;
 
 /**
  * The numeric value separating the higher half of the ordered sample data from the lower half;
@@ -18,10 +20,11 @@ public class Median extends ArithmeticOperation {
         Collections.sort(this.getList(),null);
         int n = getList().size();
 
-        if(n%2 == 0)
-          median = ((this.getList()).get(n/2) + (this.getList()).get(n/2 - 1))/2;
-        else
-          median = (this.getList()).get((Integer) n/2);
+        if (n % 2 == 0) {
+            median = ((this.getList()).get(n/2) + (this.getList()).get(n/2 - 1))/2;
+        } else {
+            median = (this.getList()).get((Integer) n/2);
+        }
 
         return median;
     }

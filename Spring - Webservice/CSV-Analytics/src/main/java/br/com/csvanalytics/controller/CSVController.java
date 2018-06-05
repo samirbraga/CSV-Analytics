@@ -17,13 +17,12 @@ import br.com.csvanalytics.metrics.ArithmeticOperations.PearsonCoefficient;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Skewness;
 import br.com.csvanalytics.metrics.ArithmeticOperations.StandardDeviation;
 import br.com.csvanalytics.metrics.ArithmeticOperations.Variance;
-import br.com.csvanalytics.metrics.GraphicOperations.ContingencyTable;
-import br.com.csvanalytics.metrics.GraphicOperations.FrequencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.QualitativeGraphicOperations.ContingencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.QualitativeGraphicOperations.FrequencyTable;
+import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Boxplot;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Histogram;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.QuantitativeFrequencyTable;
 import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Scatterplot;
-import br.com.csvanalytics.metrics.GraphicOperations.QuantitativeGraphicOperation.Boxplot;
-
 import br.com.csvanalytics.model.Session;
 
 public class CSVController {
@@ -449,12 +448,9 @@ public class CSVController {
 			boxPlot = new HashMap<String, List>();
 			String[] header = (String[]) selectedSession.get("header");
 			List<Map> records = Arrays.asList((Map[]) selectedSession.get("records"));
-			String[] qualitatives = (String[]) selectedSession.get("qualitatives");
+			String[] quantitatives = (String[]) selectedSession.get("quantitatives");
 
-			for (String title : qualitatives) {
-				String[] column = selectColumn(title, selectedSession);
-				List<String> columnData = Arrays.asList(column);
-
+			for (String title : quantitatives) {
 				Boxplot boxPlotCalc = new Boxplot(new String[]{title}, records);
 
 				boxPlot.put(title, boxPlotCalc.calculate());

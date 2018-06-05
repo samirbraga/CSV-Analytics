@@ -17,13 +17,11 @@ br/com/csvanalytics/metrics/GraphicOperations/ContingencyTable.class
 br/com/csvanalytics/metrics/GraphicOperations/GraphicOperation.class
 br/com/csvanalytics/metrics/GraphicOperations/QuantitativeGraphicOperation/QuantitativeFrequencyTable.class
 br/com/csvanalytics/view/WSView.class
-br/com/csvanalytics/metrics/ArithmeticOperations/Median.class
 br/com/csvanalytics/ApplicationStart$1.class
 br/com/csvanalytics/metrics/ArithmeticOperations/PearsonCoefficient.class
 br/com/csvanalytics/metrics/ArithmeticOperations/SumOfPowers.class
 br/com/csvanalytics/metrics/GraphicOperations/QualitativeGraphicOperation.class
 br/com/csvanalytics/model/CSVReader.class
 br/com/csvanalytics/metrics/ArithmeticOperations/Variance.class
-br/com/csvanalytics/metrics/ArithmeticOperations/Test.class
 br/com/csvanalytics/metrics/ArithmeticOperations/Covariance.class
 br/com/csvanalytics/metrics/GraphicOperations/FrequencyTable.class
