@@ -17,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Mean.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -31,24 +31,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Median.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Median.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Min.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Min.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PearsonCoefficient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/PearsonCoefficient.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -58,11 +40,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CSVReaderEndpoint.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CSVReaderEndpoint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVReaderEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+            <state relative-caret-position="175">
+              <caret line="20" column="68" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CSVBoxplotEndpoint.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVBoxplotEndpoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CSVController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controller/CSVController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="456" lean-forward="true" selection-start-line="456" selection-end-line="456" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boxplot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QuantitativeGraphicOperation/Boxplot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CSVAvaregeEndpoint.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVAvaregeEndpoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,24 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Covariance.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Covariance.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Max.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Max.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -131,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/model/Session.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVStandartDeviationEndpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVAvaregeEndpoint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVBoxplotEndpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVCorrelationCoefficientEndpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVCovarianceEndpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVFrequencyTableEndpoint.java" />
@@ -152,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/ContingencyTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVSkewnessEndpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVScatterplotEndpoint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controller/CSVController.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Covariance.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Kurtosis.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Max.java" />
@@ -165,6 +172,8 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/PearsonCoefficient.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/SumOfPowers.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVReaderEndpoint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVBoxplotEndpoint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controller/CSVController.java" />
       </list>
     </option>
   </component>
@@ -282,6 +291,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="csvanalytics" type="462c0819:PsiDirectoryNode" />
+              <item name="metrics" type="462c0819:PsiDirectoryNode" />
+              <item name="GraphicOperations" type="462c0819:PsiDirectoryNode" />
+              <item name="QuantitativeGraphicOperation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CSV-Analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CSV-Analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="csvanalytics" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -297,8 +317,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -391,11 +411,12 @@
       <workItem from="1527635519621" duration="6449000" />
       <workItem from="1527775695851" duration="4670000" />
       <workItem from="1527874803430" duration="5196000" />
+      <workItem from="1528158446250" duration="1863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36938000" />
+    <option name="totallyTimeSpent" value="38801000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
@@ -403,15 +424,15 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.48116833" weight="0.32882884" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.47963107" weight="0.32882884" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.16602613" side_tool="true" visible="true" weight="0.16366367" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.16679478" side_tool="true" visible="true" weight="0.16366367" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8339739" visible="true" weight="0.16366367" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8332052" visible="true" weight="0.16366367" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26210606" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23981553" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -437,23 +458,7 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/ApplicationStart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controler/CSVControler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controler/CSVControler.java" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -473,13 +478,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controler/CSVControler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controler/CSVControler.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/view/WSView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -507,13 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVBoxplotEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVCorrelationCoefficientEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -528,13 +520,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVFrequencyTableEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVFrequencyTableEndpoint.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVGraphicBarEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -583,26 +569,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVQualitativeContigencyTableEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVQuantitativeContigencyTableEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVQualitativeContigencyTableEndpoint.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVQuantitativeContigencyTableEndpoint.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVVarianceEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -613,13 +581,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/FrequencyTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/FrequencyTable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVStandartDeviationEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -637,16 +599,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QualitativeGraphicOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QualitativeGraphicOperation.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/ApplicationStart.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -677,38 +630,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controller/CSVController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/ContingencyTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVAvaregeEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/ContingencyTable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVMinEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -768,13 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/PearsonCoefficient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/StandardDeviation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -792,7 +707,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/Mean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVAvaregeEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -805,8 +730,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVReaderEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+        <state relative-caret-position="175">
+          <caret line="20" column="68" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/ArithmeticOperations/PearsonCoefficient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/controller/CSVController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="456" lean-forward="true" selection-start-line="456" selection-end-line="456" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/metrics/GraphicOperations/QuantitativeGraphicOperation/Boxplot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/csvanalytics/endpoint/CSVBoxplotEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
