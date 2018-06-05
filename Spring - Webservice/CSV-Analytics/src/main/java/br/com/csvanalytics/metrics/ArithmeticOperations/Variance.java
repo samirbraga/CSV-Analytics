@@ -15,7 +15,8 @@ public class Variance extends ArithmeticOperation {
     public double calculate() {
         List<Double> list = this.getList();
         
-        double variance = SumOfPowers.calculate(list, 2);
+        double sum = SumOfPowers.calculate(list, 2)
+        double variance = sum / (n - 1);
         return variance;
     }
 }
