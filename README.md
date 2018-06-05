@@ -3,6 +3,7 @@
 Este repositório contém o trabalho final da disciplina Técnicas de Programação, cursada pelo bacharelado em Ciência da Computação da Universidade Federal do Ceará no semestre 2018.1. A disciplina aborda as técnicas de programação orientada a objetos.
 
 ## Equipe
+
  - Breno Araújo de Lima [@brenoaraujolima](https://github.com/brenoaraujolima)
  - Francisco San Diego de Sousa Castilho [@SanDiegoCastilho](https://github.com/SanDiegoCastilho)
  - Lucas Tavares de Oliveira [@ltdeoliveira](https://github.com/ltdeoliveira)
@@ -10,7 +11,21 @@ Este repositório contém o trabalho final da disciplina Técnicas de Programaç
  - Samir Braga Chaves [@samirbraga](https://github.com/samirbraga)
 
 ## Objetivo
+
 O objetivo deste trabalho é criar um analisador descritivo de dados. A aplicação deve permitir que o usuário carregue um arquivo de extensão *csv* e calcule métricas e gráficos da estatística descritiva.
+
+## Características
+
+Optamos por criar um Web Sevice em Java utilizando o Framework Spring Boot. Nele recebemos e tratamos os arquivos CSVs via requisição HTTP e calculamos todas as métricas sob demanda.
+
+- **Tecnologias**	
+
+Spring Boot Documentação: https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/
+
+- **Interface Gráfica**
+
+A interface gráfica do projeto baseia-se em uma Single Page Application, desenvolvida em [ReactJs](https://reactjs.org) com o gerador de projetos "Create React App". Por meio do padrão webpack, todo projeto é transformado em arquivos estáticos, os quais estão hospedados no Github Pages, podendo ser acesso por meio do link http://samirbraga.github.io/CSV-Analytics. 
+Como o CORS WebService foi configurado de modo a ser aberto, as requisições são feitas via AJAX e o fluxo da página é guiado pelas respostas do servidor. Contudo, a API pode ser usado por quem quer que seja.
 
 ## Padrão de Arquitetura
 
@@ -44,38 +59,59 @@ O padrão Strategy foi utilizado para representar as diferentes estratégias de 
 
 O ReactJs trabalha com o conceito de Web Components e os trata como classes ou como *Factory Functions*, cada componente ao ser adicionada ao Virtual DOM (árvore de elementos criada dinâmicamente pelo javascript) é instanciado pelo padrão Factory, o qual, em determinado contexto instancia o componente que convém. [Mais sobre](http://brianyang.com/szabototo89-create-it/).
 
-## Características
-
-Optamos por criar um Web Sevice em Java utilizando o Framework Spring Boot. Nele recebemos e tratamos os arquivos CSVs via requisição HTTP e calculamos todas as métricas sob demanda.
-
-- **Técnologias**	
-Spring Boot Documentação: https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/
-
-- **Interface Gráfica**
-A interface gráfica do projeto baseia-se em uma Single Page Application, desenvolvida em [ReactJs](https://reactjs.org) com o gerador de projetos "Create React App". Por meio do padrão webpack, todo projeto é transformado em arquivos estáticos, os quais estão hospedados no Github Pages, podendo ser acesso por meio do link http://samirbraga.github.io/CSV-Analytics. 
-Como o CORS WebService foi configurado de modo a ser aberto, as requisições são feitas via AJAX e o fluxo da página é guiado pelas respostas do servidor. Contudo, a API pode ser usado por quem quer que seja.
-
 ## Métricas E Gráficos
 
-# Métricas
-
+### Métricas
 - **Média**
+
+Métrica que demonstra a tendência de concentração dos dados.É representada pelo quociente entre a soma de todos os valores de um   determinado conjunto e a quantidade de valores. 
 - **Moda**
+
+É o valor que ocorre com maior frequência em um determinado conjunto de dados.Um mesmo conjunto pode possuir mais de uma moda. Nesse caso,dizemos que ele é polimodal.
 - **Mediana**
+
+É a medida que representa o valor central em uma distribuição de dados,quando organizados em ordem crescente ou decrescente.No caso em que a quantidade de elementos é par,a mediana é igual a média aritmética entre os dois termos centrais.
 - **Variância**
+
+Indica o grau de dispersão dos dados em relação à media.É calculada através do quociente entre a soma dos quadrados das diferenças entre cada valor do conjunto e a média, e a quantidade de elementos do conjunto decrementada em uma unidade.
 - **Desvio Padrão**
+
+Também é utilizado para representar a uniformidade de um conjunto de dados.Em comparação com a variância, possui a vantagem de ser expresso na mesma unidade dos dados de origem. É numericamente igual a raiz quadrada positiva da variância.
 - **Mínimo**
+
+Menor valor numeŕico dentro do conjunto de dados.
 - **Máximo**
+
+Maior valor numérico dentro do conjunto de dados.
 - **Obliquidade (skewness)**
-- **Curtóse (kurtosis)**
+
+Medida que quantifica a assimetria entre os lados de uma distribuição de dados em um gráfico.Caso a obliquidade seja positiva, então o conjunto possui mais elementos abaixo da média.Se a obliquidade for negativa,então o conjunto possui mais elementos acima da média.
+- **Curtose (kurtosis)**
+
+Representa o achatamento da curva em uma função de distribuição de dados.
 - **Covariância**
+
+Mede o grau de dependência ou independência entre duas variáveis aleatórias.
 - **Coeficiente de Correlação de Pearson**
 
-# Gráficos
+Exprime o grau de relação entre duas variáveis através de valores situados entre -1 e 1.
+### Gráficos
 
 - **Gráfico de Barras**
+
+Conjunto de barras justapostas caracterizando os elementos da amostra,onde a altura de cada barra é proporcional ao valor numérico que ela representa.
 - **Tabela de Contingência**
+
+Maneira gráfica de visualizar o comportamento de mútiplas variáveis de maneira simultânea.
 - **Tabela de Frequências**
+
+Tabela para visualização do número de ocorrências de cada valor quantitativamente e percentualmente.
 - **Histograma**
+
+Conjunto de retângulos assentados sobre um eixo,onde suas alturas correspondem às frequências relativas dos valores da amostra.
 - **Boxplot**
+
+Consiste em uma reresentação através de um diagrama de caixas, facilitando a visualização das principais medidas de centro,assimetria e dispersão de uma distribuição de valores.
 - **Scatterplot**
+
+Representação de dados por meio de pontos em um eixo vertical e horizontal onde pode-se verificar a relação entre duas ou mais variáveis.
