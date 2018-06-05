@@ -14,9 +14,11 @@ public class StandardDeviation extends ArithmeticOperation {
 
     @Override
     public double calculate() {
+        List<Double> list = this.getList();
 
-        ArithmeticOperation standard = new Variance(this.getList());
+        double variance = new Variance(list).calculate();
 
-        return Math.sqrt(standard.calculate());
+        double standardDeviation = Math.sqrt(standard.calculate());
+        return standardDeviation;
     }
 }

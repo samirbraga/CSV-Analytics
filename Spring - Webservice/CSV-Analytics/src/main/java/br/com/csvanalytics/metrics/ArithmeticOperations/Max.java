@@ -13,15 +13,15 @@ public class Max extends ArithmeticOperation {
 
     @Override
     public double calculate() {
+        List<Double> list = this.getList();
 
-        double num = (this.getList()).get(0);
+        double max = list.get(0);
 
-        for(double i: this.getList()) {
-
-            if(i>num)
-              num = i;
+        for(Double value : list) {
+            if(value > max)
+              max = value;
         }
 
-        return num;
+        return max;
     }
 }

@@ -20,6 +20,7 @@ public class PearsonCoefficient extends ArithmeticOperation {
         double stdOptList = new StandardDeviation(optList).calculate();
         double covariance = new Covariance(list, optList).calculate();
 
-        return covariance / (stdList * stdOptList);
+        double pearsonCoefficient = covariance / (stdList * stdOptList);
+        return pearsonCoefficient;
     }
 }

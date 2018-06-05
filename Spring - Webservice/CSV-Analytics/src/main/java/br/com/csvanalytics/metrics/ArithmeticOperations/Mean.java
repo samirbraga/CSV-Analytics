@@ -13,13 +13,16 @@ public class Mean extends ArithmeticOperation {
     
     @Override
     public double calculate() {
+        List<Double> list = this.getList();
 
-        double n = 0;
+        double sum = 0;
+        int n = list.size();
 
-        for(Double i : this.getList()) {
-            n = i + n;
+        for(Double value : list) {
+            sum += value;
         }
-
-        return (n/(this.getList()).size());
+        
+        double mean = sum / n;
+        return mean;
     }
 }

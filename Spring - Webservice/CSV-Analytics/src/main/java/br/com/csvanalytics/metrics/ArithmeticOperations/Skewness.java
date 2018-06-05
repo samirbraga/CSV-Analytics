@@ -18,6 +18,7 @@ public class Skewness extends ArithmeticOperation {
         double sum = SumOfPowers.calculate(list, 3);
         int n = list.size(); 
 
-        return sum / ((n - 1) * Math.pow(standardDeviation, 3));
+        double skewness = sum / ((n - 1) * Math.pow(standardDeviation, 3));
+        return skewness;
     }
 }

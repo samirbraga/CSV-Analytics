@@ -13,7 +13,6 @@ public class Covariance extends ArithmeticOperation {
 
     @Override
     public double calculate() {
-
         List<Double> list = this.getList();
         List<Double> optList = this.getOptList();
 
@@ -26,6 +25,7 @@ public class Covariance extends ArithmeticOperation {
             productOfDiffOfSum += (list.get(i) - listMean) * (optList.get(i) - optListMean);
         }
 
-        return productOfDiffOfSum / (n -  1);
+        double covariance = productOfDiffOfSum / (n - 1);
+        return covariance;
     }
 }
