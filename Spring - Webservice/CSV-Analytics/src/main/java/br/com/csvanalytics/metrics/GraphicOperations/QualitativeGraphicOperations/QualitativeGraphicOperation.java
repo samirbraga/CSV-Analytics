@@ -1,7 +1,9 @@
-package br.com.csvanalytics.metrics.GraphicOperations;
+package br.com.csvanalytics.metrics.GraphicOperations.QualitativeGraphicOperations;
 
 import java.util.List;
 import java.util.Map;
+
+import br.com.csvanalytics.metrics.GraphicOperations.GraphicOperation;
 
 public abstract class QualitativeGraphicOperation extends GraphicOperation {
 

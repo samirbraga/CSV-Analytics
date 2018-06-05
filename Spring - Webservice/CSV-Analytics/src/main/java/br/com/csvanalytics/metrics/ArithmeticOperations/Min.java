@@ -13,15 +13,15 @@ public class Min extends ArithmeticOperation {
 
     @Override
     public double calculate() {
+        List<Double> list = this.getList();
 
-      double num = (this.getList()).get(0);
+        double min = list.get(0);
 
-      for(double i: this.getList()) {
-        
-          if(i<num)
-            num = i;
-      }
+        for(Double value : list) {
+            if(value < min)
+                min = value;
+        }
 
-      return num;
+        return min;
     }
 }

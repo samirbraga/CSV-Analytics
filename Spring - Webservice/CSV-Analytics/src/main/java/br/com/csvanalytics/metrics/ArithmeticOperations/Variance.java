@@ -13,18 +13,9 @@ public class Variance extends ArithmeticOperation {
 
     @Override
     public double calculate() {
-
-        ArithmeticOperation mean = new Mean(this.getList());
-
-        double x = mean.calculate();
-        double variance = 0;
-
-        for (double i: this.getList()) {
-            variance =  variance + (i-x)*(i-x);
-        }
-
-        variance = variance/(this.getList().size()-1);
+        List<Double> list = this.getList();
         
+        double variance = SumOfPowers.calculate(list, 2);
         return variance;
     }
 }

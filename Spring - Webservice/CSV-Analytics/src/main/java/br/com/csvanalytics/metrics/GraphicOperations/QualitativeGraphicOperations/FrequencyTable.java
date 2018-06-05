@@ -1,4 +1,4 @@
-package br.com.csvanalytics.metrics.GraphicOperations;
+package br.com.csvanalytics.metrics.GraphicOperations.QualitativeGraphicOperations;
 
 import java.util.Map;
 import java.util.HashMap;

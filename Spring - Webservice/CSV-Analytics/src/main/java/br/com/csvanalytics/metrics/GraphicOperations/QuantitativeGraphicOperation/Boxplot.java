@@ -35,12 +35,12 @@ public class Boxplot extends QuantitativeGraphicOperation {
         double median = new Median(column).calculate();
         double firstQuartile, thirdQuartile;
 
-        if ((n & 1) == 1) {
-            firstQuartile = new Median(column.subList(0, (n >> 1) - 1)).calculate();
-            thirdQuartile = new Median(column.subList((n >> 1) + 1, n - 1)).calculate();
+        if ((n % 2) == 1) {
+            firstQuartile = new Median(column.subList(0, (n / 2) - 1)).calculate();
+            thirdQuartile = new Median(column.subList((n / 2) + 1, n - 1)).calculate();
         } else {
-            firstQuartile = new Median(column.subList(0, (n >> 1) - 1)).calculate();
-            thirdQuartile = new Median(column.subList((n >> 1), n - 1)).calculate();
+            firstQuartile = new Median(column.subList(0, (n / 2) - 1)).calculate();
+            thirdQuartile = new Median(column.subList((n / 2), n - 1)).calculate();
         }
 
         List<Double> boxplot = Arrays.asList(new Double[]{min, firstQuartile, median, thirdQuartile, max});

@@ -20,6 +20,7 @@ public class Kurtosis extends ArithmeticOperation {
         double sum = SumOfPowers.calculate(list, 4);
         int n = list.size(); 
 
-        return sum / ((n - 1) * Math.pow(standardDeviation, 4));
+        double kurtosis = sum / ((n - 1) * Math.pow(standardDeviation, 4));
+        return kurtosis;
     }
 }

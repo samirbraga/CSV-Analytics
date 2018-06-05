@@ -15,15 +15,16 @@ public class Median extends ArithmeticOperation {
 
     @Override
     public double calculate() {
+        List<Double> list = this.getList();
+        Collections.sort(list, null);
 
         double median;
-        Collections.sort(this.getList(),null);
-        int n = getList().size();
+        int n = list.size();
 
         if (n % 2 == 0) {
-            median = ((this.getList()).get(n/2) + (this.getList()).get(n/2 - 1))/2;
+            median = (list.get(n / 2) + list.get((n / 2) - 1)) / 2;
         } else {
-            median = (this.getList()).get((Integer) n/2);
+            median = list.get((Integer) n / 2);
         }
 
         return median;

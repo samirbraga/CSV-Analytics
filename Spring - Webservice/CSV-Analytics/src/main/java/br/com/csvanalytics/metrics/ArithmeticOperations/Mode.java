@@ -13,8 +13,7 @@ public class Mode<T> {
         return this.list;
     }
     
-    public List<String> calculate() {
-        
+    public List<String> calculate() {  
         int frequency = 0, value, maxFrequency;
 
         List<String> modesArray = new ArrayList<String>();
