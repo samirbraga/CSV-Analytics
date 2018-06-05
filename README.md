@@ -86,7 +86,7 @@ Maior valor numérico dentro do conjunto de dados.
 - **Obliquidade (skewness)**
 
 Medida que quantifica a assimetria entre os lados de uma distribuição de dados em um gráfico.Caso a obliquidade seja positiva, então o conjunto possui mais elementos abaixo da média.Se a obliquidade for negativa,então o conjunto possui mais elementos acima da média.
-- **Curtóse (kurtosis)**
+- **Curtose (kurtosis)**
 
 Representa o achatamento da curva em uma função de distribuição de dados.
 - **Covariância**
