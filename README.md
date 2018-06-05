@@ -54,3 +54,28 @@ Spring Boot Documentação: https://docs.spring.io/spring-boot/docs/current-SNAP
 - **Interface Gráfica**
 A interface gráfica do projeto baseia-se em uma Single Page Application, desenvolvida em [ReactJs](https://reactjs.org) com o gerador de projetos "Create React App". Por meio do padrão webpack, todo projeto é transformado em arquivos estáticos, os quais estão hospedados no Github Pages, podendo ser acesso por meio do link http://samirbraga.github.io/CSV-Analytics. 
 Como o CORS WebService foi configurado de modo a ser aberto, as requisições são feitas via AJAX e o fluxo da página é guiado pelas respostas do servidor. Contudo, a API pode ser usado por quem quer que seja.
+
+## Métricas E Gráficos
+
+# Métricas
+
+- **Média**
+- **Moda**
+- **Mediana**
+- **Variância**
+- **Desvio Padrão**
+- **Mínimo**
+- **Máximo**
+- **Obliquidade (skewness)**
+- **Curtóse (kurtosis)**
+- **Covariância**
+- **Coeficiente de Correlação de Pearson**
+
+# Gráficos
+
+- **Gráfico de Barras**
+- **Tabela de Contingência**
+- **Tabela de Frequências**
+- **Histograma**
+- **Boxplot**
+- **Scatterplot**
