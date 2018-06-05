@@ -14,6 +14,7 @@ import CalcGraphicBar from './calc-graphic-bar';
 import CalcScatterplot from './calc-scatter-plot';
 
 import './calc-style.css';
+import CalcBoxplot from './calc-boxplot';
 
 class CalcOption extends Component {
     constructor(props) {
@@ -199,6 +200,19 @@ class CalcOption extends Component {
                             let data = this.state.data[table];
                             return (
                                 <CalcScatterplot id={table} className={'pt-4 mb-3'} data={data} table={table} />
+                            );
+                        })}
+                    </div>
+                );
+            } else if (this.state.calc.key === 'boxplot') {
+                calc = (
+                    <div>
+                        <FieldsNav data={this.state.data} />
+                    
+                        {Object.keys(this.state.data).map((table) => {
+                            let data = this.state.data[table];
+                            return (
+                                <CalcBoxplot id={table} className={'pt-4 mb-3'} data={data} table={table} />
                             );
                         })}
                     </div>

@@ -43,7 +43,13 @@ public class Boxplot extends QuantitativeGraphicOperation {
             thirdQuartile = new Median(column.subList((n / 2), n - 1)).calculate();
         }
 
-        List<Double> boxplot = Arrays.asList(new Double[]{min, firstQuartile, median, thirdQuartile, max});
+        column.add(max);
+        column.add(min);
+        column.add(firstQuartile);
+        column.add(median);
+        column.add(thirdQuartile);
+
+        List<Double> boxplot = column;
 
         return boxplot;
     }

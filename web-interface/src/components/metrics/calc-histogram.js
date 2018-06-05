@@ -29,8 +29,6 @@ class CalcHistogram extends Component {
             data.map(el => [el[0], parseFloat(el[2])])
         );
 
-        console.log(data);
-
         return (
             <span {...this.props} className={'d-block ' + this.props.className}>
                 <h3>{table}</h3>
