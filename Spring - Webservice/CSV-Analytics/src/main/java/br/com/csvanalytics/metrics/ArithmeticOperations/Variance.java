@@ -14,6 +14,7 @@ public class Variance extends ArithmeticOperation {
     @Override
     public double calculate() {
         List<Double> list = this.getList();
+        int n = list.size();
         
         double sum = SumOfPowers.calculate(list, 2)
         double variance = sum / (n - 1);
