@@ -111,12 +111,12 @@ class Toolbar extends Component {
                     </div>
                     <RoundButton onClick={this.toggleSearch} icon="ios-search"
                         actived={this.state.searching}
-                        className="float-right" 
+                        className="float-right"
                     />
                 </div>
                 <div ref={this.toolbarContent} className="toolbar-content pt-0">
                     <hr className="m-0" />
-                    {filteredCategoriesKeys.length ? 
+                    {filteredCategoriesKeys.length ?
                         filteredCategoriesKeys.map((key, i) => (
                             <div key={key} className="calc-section" >
                                 <span className="calc-section-title ">
