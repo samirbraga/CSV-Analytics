@@ -43,6 +43,20 @@ class DropArea extends Component {
         this.inputFile.current.click();
     }
 
+    isCSV(filename) {
+      const getExtension = filename => {
+        let parts = filename.split('.');
+        return parts[parts.length - 1];
+      }
+
+      let ext = getExtension(filename);
+      switch (ext.toLowerCase()) {
+        case 'csv':
+        return true;
+      }
+      return false;
+    }
+
     getDroppedFile(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -50,20 +64,25 @@ class DropArea extends Component {
         this.dropArea.current.classList.toggle('dragging');
 
         let file = e.dataTransfer.files[0];
-        this.setState({
+
+        if (this.isCSV(file.name)) {
+          this.setState({
             selectedFile: file
-        }, () => {
+          }, () => {
             this.sendFile();
-        });
+          });
+        }
     }
 
     chooseFile() {
         let file = this.inputFile.current.files[0];
-        this.setState({
+        if (this.isCSV(file.name)) {
+          this.setState({
             selectedFile: file
-        }, () => {
+          }, () => {
             this.sendFile();
-        });
+          });
+        }
     }
 
     sendFile() {
@@ -77,7 +96,7 @@ class DropArea extends Component {
         this.setState({
             loading: true
         });
-        
+
         fetch(`${host}/api/upload-csv`, {
             method: 'POST',
             body: data
@@ -108,8 +127,8 @@ class DropArea extends Component {
 
     render() {
         return (
-            <div ref={this.dropArea} 
-                onDragEnter={this.dragStart} 
+            <div ref={this.dropArea}
+                onDragEnter={this.dragStart}
                 onDragLeave={this.dragEnd}
                 onDragOver={e => e.preventDefault()}
                 onDrop={this.getDroppedFile}
