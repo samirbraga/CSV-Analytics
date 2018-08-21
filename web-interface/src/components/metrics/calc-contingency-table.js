@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
-import Ionicon from 'react-ionicons';
+import { Table } from 'reactstrap';
 
 import './calc-style.css';
 
-class CalcContingencyTable   extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+class CalcContingencyTable extends Component {
     render() {
         let { data } = this.props;
         let { table } = this.props;
@@ -31,7 +26,7 @@ class CalcContingencyTable   extends Component {
         return (
             <span {...this.props} className={'d-block ' + this.props.className}>
                 { 
-                    data.status == 'error' ?
+                    data.status === 'error' ?
                     <div>{
                         Object.keys(data).map(key => (
                             <span>

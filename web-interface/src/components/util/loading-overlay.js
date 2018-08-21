@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ionicon from 'react-ionicons';
+import cx from 'classnames';
 
 import './loading-overlay.css';
 
@@ -15,13 +16,20 @@ class LoadingOverlay extends Component {
     render() {
         return (
             <div 
-                className={"loading-overlay justify-content-center align-items-center "
-                 + (this.props.loading ? ' d-flex' : 'd-none')
-                 + (this.props.darker ? ' darker' : '')
-                 }>
-                <Ionicon icon="md-grid"
+                className={cx(
+                    "loading-overlay justify-content-center align-items-center",
+                    {
+                        "darker": this.props.darker,
+                        "d-flex": this.props.loading,
+                        "d-none": !this.props.loading
+                    }
+                )}
+            >
+                <Ionicon
+                    icon="md-grid"
                     color={this.props.darker ? 'white' : 'black'}
-                    fontSize={this.props.darker ? '60px' : '40px'}  />
+                    fontSize={this.props.darker ? '60px' : '40px'}
+                    />
             </div>
         );
     }

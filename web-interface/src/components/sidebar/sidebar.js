@@ -15,7 +15,7 @@ class Sidebar extends Component {
                     <h1>ANALISE SEUS DADOS AQUI, AGORA E GRATUITAMENTE.</h1>
                     <p className="mt-3 d-block">Arraste seu arquivo csv ao lado ou clique para procurá-lo</p>
                 </div>
-                <div className="sidebar-footer"></div>
+                <div className="sidebar-footer" />
             </div>
         );
     }

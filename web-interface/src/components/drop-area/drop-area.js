@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
 import { withRouter } from 'react-router';
-import { Redirect } from 'react-router-dom';
 
 import store from '../../store';
 
@@ -83,28 +81,29 @@ class DropArea extends Component {
         fetch(`${host}/api/upload-csv`, {
             method: 'POST',
             body: data
-        }).then(res => {
-            res.json().then(json => {
-                let csv_data = {
-                    header: json.header,
-                    records: json.records
-                };
+        })
+        .then(res => res.json())
+        .then(json => {
+            let csv_data = {
+                header: json.header,
+                records: json.records
+            };
 
-                store.dispatch({
-                    type: 'SET_CSV_DATA',
-                    payload: csv_data
-                });
-                store.dispatch({
-                    type: 'SET_TOKEN',
-                    payload: json.token[0]
-                });
+            store.dispatch({
+                type: 'SET_CSV_DATA',
+                payload: csv_data
+            });
 
-                localStorage.setItem('csv_data', JSON.stringify(csv_data));
-                localStorage.setItem('token', JSON.stringify({ token: json.token[0] }));
+            store.dispatch({
+                type: 'SET_TOKEN',
+                payload: json.token[0]
+            });
 
-                this.props.history.push('/CSV-Analytics/data-visualization');
-            }).catch(e => console.log(e));
-        });
+            localStorage.setItem('csv_data', JSON.stringify(csv_data));
+            localStorage.setItem('token', JSON.stringify({ token: json.token[0] }));
+
+            this.props.history.push('/CSV-Analytics/data-visualization');
+        }).catch(e => console.log(e));
     }
 
     render() {
@@ -112,18 +111,19 @@ class DropArea extends Component {
             <div ref={this.dropArea} 
                 onDragEnter={this.dragStart} 
                 onDragLeave={this.dragEnd}
-                onDragOver={(e) => e.preventDefault()}
+                onDragOver={e => e.preventDefault()}
                 onDrop={this.getDroppedFile}
-                className="drop-area w-100 h-100">
+                className="drop-area w-100 h-100"
+            >
                 <input type="file" onChange={this.chooseFile} ref={this.inputFile} name="csv-file" id="csv-file" hidden />
                 <LoadingOverlay darker={true} loading={this.state.loading} />
-                <div className="overlay-darker"></div>
+                <div className="overlay-darker" />
                 { 
-                    !this.state.loading ?
+                    !this.state.loading &&
                     <div
                         onClick={this.showChooserFileWindow} 
-                        className="overlay-line"></div> :
-                    ''
+                        className="overlay-line" 
+                    />
                 }
             </div>
         );

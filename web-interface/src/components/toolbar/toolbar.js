@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
 import Ionicon from 'react-ionicons';
 
 import store from '../../store';
 
 import SlinButton from '../util/slin-button';
-import RoundButton from '../util/round-button';
+import ToolbarHeader from './toolbar-header';
 
 import './toolbar.css';
 
@@ -23,44 +21,37 @@ class Toolbar extends Component {
         this.state = {
             calcOptions: store.getState().calcOptions,
             filteredCategories: store.getState().calcOptions,
-            searching: false
+            searching: false,
+            scrolled: false
         };
-
-        this.searchInput = React.createRef();
-        this.toolbarHeader = React.createRef();
-        this.toolbarContent = React.createRef();
 
         this.searchCalc = this.searchCalc.bind(this);
         this.toggleSearch = this.toggleSearch.bind(this);
+        this.scrollContentHandler = this.scrollContentHandler.bind(this);
     }
 
-    componentDidMount() {
-        let headerEl = this.toolbarHeader.current;
-        let contentEl = this.toolbarContent.current;
-        contentEl.addEventListener('scroll', function(e) {
-            if (this.scrollTop > 20 && !headerEl.classList.contains('shadow')) {
-                headerEl.classList.add('shadow');
-            } else {
-                if (this.scrollTop <= 20 && headerEl.classList.contains('shadow')) {
-                    headerEl.classList.remove('shadow');
-                }
-            }
-        });
+    scrollContentHandler(e) {
+        const scrollTop = e.target.scrollTop;
+        if (scrollTop > 20) {
+            this.setState({
+                scrolled: true
+            });
+        } else {
+            this.setState({
+                scrolled: false
+            });
+        }
     }
 
     toggleSearch() {
-        this.setState((prev) => {
-            if (prev.searching) {
+        this.setState(prevState => {
+            if (prevState.searching) {
                 this.searchCalc();
             }
 
             return {
-                ...prev,
-                searching: !prev.searching
-            }
-        }, () => {
-            if (this.state.searching) {
-                this.searchInput.current.focus();
+                ...prevState,
+                searching: !prevState.searching
             }
         });
     }
@@ -101,22 +92,18 @@ class Toolbar extends Component {
 
         return (
             <div className="toolbar h-100 d-flex flex-column">
-                <div ref={this.toolbarHeader} className="toolbar-header pb-3 pt-3 px-3 clearfix">
-                    <div className={"search-container float-left " + (this.state.searching ? '' : 'd-none')}>
-                        <input ref={this.searchInput} type="text" onKeyUp={(e) => this.searchCalc(e.target.value)} />
-                    </div>
-                    <div className={"toolbar-header-title float-left mt-1 " + (this.state.searching ? 'd-none' : '')} >
-                        <img className="d-inline-block align-middle mr-3" src="/CSV-Analytics/imgs/white-icon.png" alt="Logo - CSV-Analytics"/>
-                        <span className="d-inline-block align-middle" ><strong>CSV</strong> ANALYTICS</span>
-                    </div>
-                    <RoundButton onClick={this.toggleSearch} icon="ios-search"
-                        actived={this.state.searching}
-                        className="float-right" 
-                    />
-                </div>
-                <div ref={this.toolbarContent} className="toolbar-content pt-0">
+                <ToolbarHeader
+                    toggleSearch={this.toggleSearch}
+                    searchHandler={this.searchCalc}
+                    scrolled={this.state.scrolled}
+                    searching={this.state.searching}
+                />
+                <div 
+                    onScroll={this.scrollContentHandler}
+                    className="toolbar-content pt-0">
                     <hr className="m-0" />
-                    {filteredCategoriesKeys.length ? 
+                    {
+                        filteredCategoriesKeys.length ? 
                         filteredCategoriesKeys.map((key, i) => (
                             <div key={key} className="calc-section" >
                                 <span className="calc-section-title ">
@@ -125,7 +112,7 @@ class Toolbar extends Component {
                                     </div>
                                     <span className="d-inline-blcok align-middle" >{translater[key]}</span>
                                 </span>
-                                <div className="">
+                                <div>
                                     {this.state.filteredCategories[key].map((opt) => (
                                         <SlinButton to={"/CSV-Analytics/data-visualization/" + opt.key} key={opt.key} className="calc-opt" >
                                             {opt.name}
@@ -133,14 +120,15 @@ class Toolbar extends Component {
                                     ))}
                                 </div>
                                 {
-                                    i == filteredCategoriesKeys.length - 1 ?
-                                    '' :
+                                    i !== filteredCategoriesKeys.length - 1 &&
                                     <hr/>
                                 }
                             </div>
                         )) :
                         <div className="calc-section" >
-                            <span className="calc-section-title" >Nenhum cálculo encontrado para sua pesquisa.</span>
+                            <span className="calc-section-title" >
+                                Nenhum cálculo encontrado para sua pesquisa.
+                            </span>
                         </div>
                     }
                 </div>

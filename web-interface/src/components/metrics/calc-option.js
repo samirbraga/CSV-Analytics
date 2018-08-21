@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
-import CalcPlainTable from './calc-plain-table';
+import { Table } from 'reactstrap';
 
 import store from '../../store';
 
 import LoadingOverlay from '../util/loading-overlay';
-import CalcContingencyTable from './calc-contingency-table';
 import FieldsNav from './fields-nav';
+import CalcPlainTable from './calc-plain-table';
+import CalcContingencyTable from './calc-contingency-table';
 import CalcQuantitativeFrequencyTable from './calc-quantitative-frequency-table';
 import CalcQualitativeFrequencyTable from './calc-qualitative-frequency-table';
 import CalcHistogram from './calc-histogram';
 import CalcGraphicBar from './calc-graphic-bar';
 import CalcScatterplot from './calc-scatter-plot';
+import CalcBoxplot from './calc-boxplot';
 
 import './calc-style.css';
-import CalcBoxplot from './calc-boxplot';
 
 class CalcOption extends Component {
     constructor(props) {
@@ -53,7 +53,6 @@ class CalcOption extends Component {
     updateComponent(props) {
         var myInit = {
             method: 'GET',
-            // mode: 'cors',
             cache: 'default'
         };
 
@@ -96,7 +95,7 @@ class CalcOption extends Component {
                     <h3>{this.state.calc.name}</h3>
                     <hr />
                     {
-                        this.state.data != {} ?
+                        this.state.data !== {} ?
                         <CalcPlainTable data={this.state.data} /> :
                         ''
                     }
@@ -107,7 +106,7 @@ class CalcOption extends Component {
                 calc = (
                     <div>
                         {
-                            this.state.data.status == 'error' ?
+                            this.state.data.status === 'error' ?
                             <div>{
                                 <Table className="calc-plain-table my-2" >
                                     <tbody>

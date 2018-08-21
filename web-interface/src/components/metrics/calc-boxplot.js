@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
 import { Chart } from 'react-google-charts';
-import Ionicon from 'react-ionicons';
 
 import './calc-style.css';
 
 class CalcBoxplot extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let { data } = this.props;
         let { table } = this.props;

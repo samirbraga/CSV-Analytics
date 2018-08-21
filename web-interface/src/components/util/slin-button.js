@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
+import cx from 'classnames';
 
 import './slin-button.css';
 
-class SlinButton extends Component {
-    render() {
-        return (
-            <Link {...this.props} className={"slin-button " + this.props.className}  >
-                {this.props.children}
-            </Link>
-        );
-    }
-}
+const SlinButton = props => (
+    <Link {...props} className={cx("slin-button", props.className)}  >
+        {props.children}
+    </Link>
+);
 
 export default SlinButton;

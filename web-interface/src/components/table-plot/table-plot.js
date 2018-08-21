@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
-import Ionicon from 'react-ionicons';
 
 import LoadingOverlay from '../util/loading-overlay';
 

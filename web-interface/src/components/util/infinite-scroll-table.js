@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
-import Ionicon from 'react-ionicons';
-
-import LoadingOverlay from '../util/loading-overlay';
+import cx from 'classnames';
 
 import './infinite-scroll-table.css';
-
-import store from '../../store';
 
 class InfiniteScrollTable extends Component {
     constructor(props) {
@@ -48,7 +44,7 @@ class InfiniteScrollTable extends Component {
             <div
                 onScroll={this.loadedOnEndScroll} 
                 {...{ ...this.props, data: null, records: null, header: null }}
-                className={'scrollable ' + this.props.className}>
+                className={cx('scrollable', this.props.className)}>
                 <Table>
                     <thead>
                         <tr>
@@ -67,15 +63,14 @@ class InfiniteScrollTable extends Component {
                         ))}
                     </tbody>
                     {
-                        this.props.hasFooter ?
+                        this.props.hasFooter &&
                         <tfoot>
                             <tr>
                                 {footer.map(val => (
                                     <td>{val}</td>
                                 ))}
                             </tr>
-                        </tfoot> :
-                        ''
+                        </tfoot>
                     }
                 </Table>
             </div>

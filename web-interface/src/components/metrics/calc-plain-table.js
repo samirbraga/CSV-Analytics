@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
-import Ionicon from 'react-ionicons';
 
 import './calc-style.css';
 
 class CalcPlainTable extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let { data } = this.props;
         let dataKeys = Object.keys(this.props.data).map(k => k.toString());
